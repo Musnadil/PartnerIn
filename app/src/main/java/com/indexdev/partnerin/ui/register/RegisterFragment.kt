@@ -26,7 +26,7 @@ class RegisterFragment : Fragment() {
         val jenisUsaha = resources.getStringArray(R.array.jenis_usaha)
         val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, jenisUsaha)
         binding.etDropdownJenisUsaha.setAdapter(arrayAdapter)
-        binding.btnRegister.setOnClickListener {
+        binding.btnLogin.setOnClickListener {
             findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }
     }
