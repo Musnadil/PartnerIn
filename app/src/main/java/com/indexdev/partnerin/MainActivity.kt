@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
                 hideSystemUI()
                 binding.bottomNavigation.visibility = View.GONE
             } else {
+                binding.bottomNavigation.visibility = View.VISIBLE
                 showSystemUI()
                 lightStatusBar(window)
             }
