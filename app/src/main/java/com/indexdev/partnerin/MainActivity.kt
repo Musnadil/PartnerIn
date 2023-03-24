@@ -16,6 +16,9 @@ class MainActivity : AppCompatActivity() {
         R.id.registerFragment,
         R.id.loginFragment,
     )
+    private val listFragmentNoMenu = listOf(
+        R.id.addProductFragment
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,13 +33,19 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigation.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id in listFragment) {
-                hideSystemUI()
-                binding.bottomNavigation.visibility = View.GONE
-            } else {
-                binding.bottomNavigation.visibility = View.VISIBLE
-                showSystemUI()
-                lightStatusBar(window)
+            when (destination.id) {
+                in listFragment -> {
+                    hideSystemUI()
+                    binding.bottomNavigation.visibility = View.GONE
+                }
+                in listFragmentNoMenu -> {
+                    binding.bottomNavigation.visibility = View.GONE
+                }
+                else -> {
+                    binding.bottomNavigation.visibility = View.VISIBLE
+                    showSystemUI()
+                    lightStatusBar(window)
+                }
             }
         }
     }

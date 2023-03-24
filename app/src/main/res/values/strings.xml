@@ -8,4 +8,12 @@
         <item>Rental Kendaraan</item>
         <item>Rumah Makan</item>
     </string-array>
+    <string-array name="satuan_harga">
+        <item>/Botol</item>
+        <item>/Cup</item>
+        <item>/Gelas</item>
+        <item>/Hari</item>
+        <item>/Porsi</item>
+        <item>/Pc(s)</item>
+    </string-array>
 </resources>

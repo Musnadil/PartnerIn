@@ -12,8 +12,8 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@android:color/transparent</item>
         <!-- light navigation bar in night mode-->
-        <item name="android:navigationBarColor">@color/white_theme</item>
-        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>
+        <item name="android:navigationBarColor">@color/dark_grey</item>
+<!--        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>-->
     </style>
     <style name="ShapeAppearanceOverlay.App.CornerSize10Percent" parent="">
         <item name="cornerSize">8dp</item>

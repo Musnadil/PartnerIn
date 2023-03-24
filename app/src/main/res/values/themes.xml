@@ -15,7 +15,8 @@
         <!--        force night mode-->
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
         <!--        light navigation bar-->
-        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>
+        <item name="android:navigationBarColor">@color/dark_grey</item>
+<!--        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>-->
     </style>
     <style name="ShapeAppearanceOverlay.App.CornerSize10Percent" parent="">
         <item name="cornerSize">8dp</item>
