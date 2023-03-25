@@ -38,7 +38,7 @@
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_con_nama_pemilik"
+                android:id="@+id/et_con_business_owner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nama Pemilik Usaha"
@@ -55,7 +55,7 @@
                 app:hintTextColor="@color/teal">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_nama_pemilik_usaha"
+                    android:id="@+id/et_business_owner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
@@ -67,7 +67,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_con_nama_usaha"
+                android:id="@+id/et_con_business_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nama Usaha"
@@ -84,7 +84,7 @@
                 app:hintTextColor="@color/teal">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_nama_usaha"
+                    android:id="@+id/et_business_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
@@ -96,7 +96,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_con_email_pemilik"
+                android:id="@+id/et_con_email_owner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email Pemilik"
@@ -113,7 +113,7 @@
                 app:hintTextColor="@color/teal">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_email_pemilik"
+                    android:id="@+id/et_email_owner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
@@ -140,7 +140,7 @@
                     android:textSize="16sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/et_con_nomer_ponsel"
+                    android:id="@+id/et_con_number_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -158,7 +158,7 @@
                     app:hintTextColor="@color/teal">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_nomer_ponsel"
+                        android:id="@+id/et_number_phone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:imeOptions="actionDone"
@@ -172,7 +172,7 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_dropdown_container"
+                android:id="@+id/et_con_type_of_business"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -188,7 +188,7 @@
                 app:hintTextColor="@color/teal">
 
                 <AutoCompleteTextView
-                    android:id="@+id/et_dropdown_jenis_usaha"
+                    android:id="@+id/et_type_of_business"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="none"
