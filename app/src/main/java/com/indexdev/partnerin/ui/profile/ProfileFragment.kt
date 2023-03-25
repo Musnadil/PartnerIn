@@ -1,23 +1,22 @@
-package com.indexdev.partnerin.ui.home
+package com.indexdev.partnerin.ui.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.indexdev.partnerin.R
-import com.indexdev.partnerin.databinding.FragmentHomeBinding
+import com.indexdev.partnerin.databinding.FragmentProfileBinding
 
-class HomeFragment : Fragment() {
-    private var _binding: FragmentHomeBinding? = null
+class ProfileFragment : Fragment() {
+    private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentProfileBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -27,10 +26,5 @@ class HomeFragment : Fragment() {
         if (statusBarHeight > 0) {
             binding.statusbar.layoutParams.height = resources.getDimensionPixelSize(statusBarHeight)
         }
-
-        binding.btnFabAdd.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_addProductFragment)
-        }
     }
-
 }
