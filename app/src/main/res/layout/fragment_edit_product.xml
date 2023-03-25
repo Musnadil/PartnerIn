@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.addproduct.AddProductFragment">
+    tools:context=".ui.editproduct.EditProductFragment">
 
     <View
         android:id="@+id/statusbar"
@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:scrollbars="none"
-        app:layout_constraintBottom_toTopOf="@id/btn_publish"
+        app:layout_constraintBottom_toTopOf="@id/btn_save"
         app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <LinearLayout
@@ -178,13 +178,26 @@
     </ScrollView>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_publish"
+        android:id="@+id/btn_save"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="16dp"
         android:fontFamily="@font/poppins_semibold"
-        android:text="Terbitkan"
+        android:text="Simpan Perubahan"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toTopOf="@id/btn_delete" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_delete"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/red"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Hapus Produk"
         android:textAllCaps="false"
         android:textSize="16sp"
         app:cornerRadius="16dp"

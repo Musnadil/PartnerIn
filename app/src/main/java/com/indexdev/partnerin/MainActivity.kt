@@ -17,7 +17,8 @@ class MainActivity : AppCompatActivity() {
         R.id.loginFragment,
     )
     private val listFragmentNoMenu = listOf(
-        R.id.addProductFragment
+        R.id.addProductFragment,
+        R.id.editProductFragment,
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {

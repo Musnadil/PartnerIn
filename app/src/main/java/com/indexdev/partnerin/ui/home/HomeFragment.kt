@@ -29,7 +29,7 @@ class HomeFragment : Fragment() {
         }
 
         binding.btnFabAdd.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_addProductFragment)
+            findNavController().navigate(R.id.action_homeFragment_to_editProductFragment)
         }
     }
 
