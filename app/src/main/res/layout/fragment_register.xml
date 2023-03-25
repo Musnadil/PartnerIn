@@ -124,38 +124,57 @@
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_con_nomer_ponsel"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nomer Ponsel"
-                app:boxBackgroundColor="@color/white_theme"
-                app:boxCornerRadiusBottomEnd="16dp"
-                app:boxCornerRadiusBottomStart="16dp"
-                app:boxCornerRadiusTopEnd="16dp"
-                app:boxCornerRadiusTopStart="16dp"
-                app:boxStrokeWidth="0dp"
-                app:boxStrokeWidthFocused="0dp"
-                app:endIconMode="clear_text"
-                app:endIconTint="@color/light_grey"
-                app:errorEnabled="true"
-                app:hintTextColor="@color/teal">
+                android:orientation="horizontal">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_nomer_ponsel"
+                <TextView
+                    android:id="@+id/id_code"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_gravity="start"
+                    android:background="@drawable/bg_rounded_16"
+                    android:gravity="center"
+                    android:text="+62"
+                    android:textSize="16sp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_con_nomer_ponsel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:imeOptions="actionDone"
-                    android:inputType="phone"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:textCursorDrawable="@drawable/custom_cursor_et"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginStart="8dp"
+                    android:hint="Nomer Ponsel"
+                    app:boxBackgroundColor="@color/white_theme"
+                    app:boxCornerRadiusBottomEnd="16dp"
+                    app:boxCornerRadiusBottomStart="16dp"
+                    app:boxCornerRadiusTopEnd="16dp"
+                    app:boxCornerRadiusTopStart="16dp"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/light_grey"
+                    app:errorEnabled="true"
+                    app:hintTextColor="@color/teal">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_nomer_ponsel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionDone"
+                        android:inputType="phone"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textCursorDrawable="@drawable/custom_cursor_et"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/et_dropdown_container"
-                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"                android:layout_width="match_parent"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Jenis Usaha"
                 app:boxBackgroundColor="@color/white_theme"
@@ -165,8 +184,8 @@
                 app:boxCornerRadiusTopStart="16dp"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="0dp"
-                app:hintTextColor="@color/teal"
-                app:errorEnabled="true">
+                app:errorEnabled="true"
+                app:hintTextColor="@color/teal">
 
                 <AutoCompleteTextView
                     android:id="@+id/et_dropdown_jenis_usaha"
