@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.indexdev.partnerin.R
+import androidx.navigation.fragment.findNavController
 import com.indexdev.partnerin.databinding.FragmentEditAccountBinding
 
 class EditAccountFragment : Fragment() {
@@ -21,6 +21,12 @@ class EditAccountFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        val statusBarHeight = resources.getIdentifier("status_bar_height", "dimen", "android")
+        if (statusBarHeight > 0) {
+            binding.statusbar.layoutParams.height = resources.getDimensionPixelSize(statusBarHeight)
+        }
+        binding.btnBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 }

@@ -1,5 +1,8 @@
+@file:Suppress("DEPRECATION")
+
 package com.indexdev.partnerin
 
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +22,8 @@ class MainActivity : AppCompatActivity() {
     private val listFragmentNoMenu = listOf(
         R.id.addProductFragment,
         R.id.editProductFragment,
+        R.id.editAccountFragment,
+        R.id.accountSettingsFragment,
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,7 +62,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showSystemUI() {
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR or
-                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR or
+                    View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+        }
     }
 }

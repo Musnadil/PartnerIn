@@ -75,5 +75,22 @@
         android:id="@+id/profileFragment"
         android:name="com.indexdev.partnerin.ui.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_editAccountFragment"
+            app:destination="@id/editAccountFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_accountSettingsFragment"
+            app:destination="@id/accountSettingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountSettingsFragment"
+        android:name="com.indexdev.partnerin.ui.accountsettings.AccountSettingsFragment"
+        android:label="fragment_account_settings"
+        tools:layout="@layout/fragment_account_settings" />
+    <fragment
+        android:id="@+id/editAccountFragment"
+        android:name="com.indexdev.partnerin.ui.editaccount.EditAccountFragment"
+        android:label="fragment_edit_account"
+        tools:layout="@layout/fragment_edit_account" />
 </navigation>

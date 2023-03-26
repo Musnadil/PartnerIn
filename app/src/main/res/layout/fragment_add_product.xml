@@ -190,7 +190,6 @@
         app:cornerRadius="16dp"
         app:layout_constraintBottom_toTopOf="@id/bottom_nav_bar" />
 
-
     <!--put this view always in bottom-->
     <View
         android:id="@+id/bottom_nav_bar"
