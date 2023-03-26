@@ -1,5 +1,6 @@
 package com.indexdev.partnerin.ui.profile
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -32,6 +33,19 @@ class ProfileFragment : Fragment() {
         }
         binding.btnAccountSettings.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_accountSettingsFragment)
+        }
+        binding.btnLogout.setOnClickListener {
+            AlertDialog.Builder(context)
+                .setTitle("Konfirmasi Keluar")
+                .setMessage("Anda yakin ingin keluar?")
+                .setCancelable(false)
+                .setPositiveButton("Ya") { positive, _ ->
+                    positive.dismiss()
+                }
+                .setNegativeButton("Tidak") { negative, _ ->
+                    negative.dismiss()
+                }
+                .show()
         }
     }
 }
