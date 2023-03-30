@@ -16,4 +16,11 @@
         <item>/Porsi</item>
         <item>/Pcs</item>
     </string-array>
+    <string-array name="jenis_fasilitas">
+        <item>Masjid</item>
+        <item>Gereja</item>
+        <item>Pura</item>
+        <item>Vihara</item>
+        <item>Klenteng</item>
+    </string-array>
 </resources>
