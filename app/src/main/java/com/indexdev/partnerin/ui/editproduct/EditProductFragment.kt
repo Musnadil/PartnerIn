@@ -18,8 +18,10 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.indexdev.partnerin.R
 import com.indexdev.partnerin.databinding.FragmentEditProductBinding
+import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 
+@AndroidEntryPoint
 class EditProductFragment : Fragment() {
     private var _binding: FragmentEditProductBinding? = null
     private val binding get() = _binding!!

@@ -9,7 +9,9 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.indexdev.partnerin.databinding.FragmentAccountSettingsBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AccountSettingsFragment : Fragment() {
     private var _binding: FragmentAccountSettingsBinding? = null
     private val binding get() = _binding!!

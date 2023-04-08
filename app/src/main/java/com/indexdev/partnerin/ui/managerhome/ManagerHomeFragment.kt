@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.indexdev.partnerin.R
 import com.indexdev.partnerin.databinding.FragmentManagerHomeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ManagerHomeFragment : Fragment() {
     private var _binding: FragmentManagerHomeBinding? = null
     private val binding get() = _binding!!

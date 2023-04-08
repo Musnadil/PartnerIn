@@ -11,7 +11,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.indexdev.partnerin.databinding.ActivityMainBinding
 import com.indexdev.partnerin.ui.lightStatusBar
 import com.indexdev.partnerin.ui.setFullScreen
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val listFragment = listOf(

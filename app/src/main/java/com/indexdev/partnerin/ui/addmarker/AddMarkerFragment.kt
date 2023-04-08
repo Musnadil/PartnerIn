@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.indexdev.partnerin.databinding.FragmentAddMarkerBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AddMarkerFragment : Fragment() {
     private var _binding: FragmentAddMarkerBinding? = null
     private val binding get() = _binding!!

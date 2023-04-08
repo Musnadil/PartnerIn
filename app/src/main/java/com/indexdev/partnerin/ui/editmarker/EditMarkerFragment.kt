@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.indexdev.partnerin.R
 import com.indexdev.partnerin.databinding.FragmentEditMarkerBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class EditMarkerFragment : Fragment() {
     private var _binding: FragmentEditMarkerBinding? = null
     private val binding get() = _binding!!

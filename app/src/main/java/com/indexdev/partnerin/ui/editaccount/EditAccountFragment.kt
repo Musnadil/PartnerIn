@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.indexdev.partnerin.databinding.FragmentEditAccountBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class EditAccountFragment : Fragment() {
     private var _binding: FragmentEditAccountBinding? = null
     private val binding get() = _binding!!

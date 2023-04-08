@@ -21,7 +21,9 @@ import com.google.android.gms.location.*
 import com.google.android.gms.tasks.Task
 import com.indexdev.partnerin.R
 import com.indexdev.partnerin.databinding.FragmentRegisterBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RegisterFragment : Fragment() {
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
