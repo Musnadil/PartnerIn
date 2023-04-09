@@ -16,6 +16,9 @@
             app:exitAnim="@anim/slide_out"
             app:popUpTo="@id/registerFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_registerFragment_to_registerFragment2"
+            app:destination="@id/registerFragment2" />
     </fragment>
     <fragment
         android:id="@+id/splashScreenFragment"
@@ -93,4 +96,9 @@
         android:name="com.indexdev.partnerin.ui.editaccount.EditAccountFragment"
         android:label="fragment_edit_account"
         tools:layout="@layout/fragment_edit_account" />
+    <fragment
+        android:id="@+id/registerFragment2"
+        android:name="com.indexdev.partnerin.ui.register.RegisterFragment2"
+        android:label="fragment_register2"
+        tools:layout="@layout/fragment_register2" />
 </navigation>

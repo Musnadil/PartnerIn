@@ -59,6 +59,7 @@ class RegisterFragment : Fragment() {
         binding.btnRegister.setOnClickListener {
             fetchLocation()
             Toast.makeText(requireContext(), "$lat,$long", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_registerFragment_to_registerFragment2)
         }
     }
 

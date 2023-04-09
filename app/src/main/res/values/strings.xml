@@ -2,6 +2,7 @@
     <string name="app_name">PartnerIn</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tv_image_regist">Untuk mempermudah peninjauan oleh tim kami mohon untuk upload foto gerai anda.</string>
 
     <string-array name="jenis_usaha">
         <item>Penginapan</item>
