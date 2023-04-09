@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         R.id.editProductFragment,
         R.id.editAccountFragment,
         R.id.accountSettingsFragment,
+        R.id.superAdminHomeFragment
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,6 +49,7 @@ class MainActivity : AppCompatActivity() {
                     binding.bottomNavigation.visibility = View.GONE
                 }
                 in listFragmentNoMenu -> {
+                    lightStatusBar(window)
                     binding.bottomNavigation.visibility = View.GONE
                 }
                 else -> {

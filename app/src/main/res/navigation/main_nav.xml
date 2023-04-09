@@ -53,6 +53,9 @@
         <action
             android:id="@+id/action_loginFragment_to_managerHomeFragment"
             app:destination="@id/managerHomeFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_superAdminHomeFragment"
+            app:destination="@id/superAdminHomeFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -130,4 +133,9 @@
             android:id="@+id/action_managerHomeFragment_to_editMarkerFragment"
             app:destination="@id/editMarkerFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/superAdminHomeFragment"
+        android:name="com.indexdev.partnerin.ui.superadminhome.SuperAdminHomeFragment"
+        android:label="fragment_super_admin_home"
+        tools:layout="@layout/fragment_super_admin_home" />
 </navigation>
