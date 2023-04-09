@@ -50,6 +50,9 @@
             app:exitAnim="@anim/zoom_out"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_managerHomeFragment"
+            app:destination="@id/managerHomeFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -100,5 +103,31 @@
         android:id="@+id/registerFragment2"
         android:name="com.indexdev.partnerin.ui.register.RegisterFragment2"
         android:label="fragment_register2"
-        tools:layout="@layout/fragment_register2" />
+        tools:layout="@layout/fragment_register2" >
+        <action
+            android:id="@+id/action_registerFragment2_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addMarkerFragment"
+        android:name="com.indexdev.partnerin.ui.addmarker.AddMarkerFragment"
+        android:label="fragment_add_marker"
+        tools:layout="@layout/fragment_add_marker" />
+    <fragment
+        android:id="@+id/editMarkerFragment"
+        android:name="com.indexdev.partnerin.ui.editmarker.EditMarkerFragment"
+        android:label="fragment_edit_marker"
+        tools:layout="@layout/fragment_edit_marker" />
+    <fragment
+        android:id="@+id/managerHomeFragment"
+        android:name="com.indexdev.partnerin.ui.managerhome.ManagerHomeFragment"
+        android:label="fragment_manager_home"
+        tools:layout="@layout/fragment_manager_home" >
+        <action
+            android:id="@+id/action_managerHomeFragment_to_addMarkerFragment"
+            app:destination="@id/addMarkerFragment" />
+        <action
+            android:id="@+id/action_managerHomeFragment_to_editMarkerFragment"
+            app:destination="@id/editMarkerFragment" />
+    </fragment>
 </navigation>
