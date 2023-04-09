@@ -137,5 +137,14 @@
         android:id="@+id/superAdminHomeFragment"
         android:name="com.indexdev.partnerin.ui.superadminhome.SuperAdminHomeFragment"
         android:label="fragment_super_admin_home"
-        tools:layout="@layout/fragment_super_admin_home" />
+        tools:layout="@layout/fragment_super_admin_home" >
+        <action
+            android:id="@+id/action_superAdminHomeFragment_to_superAdminApprovalFragment"
+            app:destination="@id/superAdminApprovalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/superAdminApprovalFragment"
+        android:name="com.indexdev.partnerin.ui.superadminapproval.SuperAdminApprovalFragment"
+        android:label="fragment_super_admin_approval"
+        tools:layout="@layout/fragment_super_admin_approval" />
 </navigation>

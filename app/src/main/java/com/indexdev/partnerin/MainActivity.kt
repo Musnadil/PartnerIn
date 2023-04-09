@@ -27,7 +27,8 @@ class MainActivity : AppCompatActivity() {
         R.id.editProductFragment,
         R.id.editAccountFragment,
         R.id.accountSettingsFragment,
-        R.id.superAdminHomeFragment
+        R.id.superAdminHomeFragment,
+        R.id.superAdminApprovalFragment,
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
