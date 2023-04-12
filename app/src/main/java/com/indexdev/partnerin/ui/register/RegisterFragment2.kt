@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.Context
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -34,6 +35,7 @@ class RegisterFragment2 : Fragment() {
     private val binding get() = _binding!!
     private var uri: String = ""
     private val viewModel: RegisterViewModel by viewModels()
+    private lateinit var sharedPref: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +47,10 @@ class RegisterFragment2 : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sharedPref = requireContext().getSharedPreferences(
+            RegisterFragment.REGISTER_SP,
+            Context.MODE_PRIVATE
+        )
         binding.btnBack.setOnClickListener {
             findNavController().navigate(R.id.action_registerFragment2_to_registerFragment)
         }
@@ -55,12 +61,9 @@ class RegisterFragment2 : Fragment() {
         registerObserver()
     }
 
-    fun doRegister(){
+    fun doRegister() {
         //get data from page register 1
-        val sharedPref = requireContext().getSharedPreferences(
-            RegisterFragment.REGISTER_SP,
-            Context.MODE_PRIVATE
-        )
+
         val owner = sharedPref.getString(OWNER, DEFAULT_VALUE)
         val businessName = sharedPref.getString(RegisterFragment.BUSINESS_NAME, DEFAULT_VALUE)
         val emailOwner = sharedPref.getString(RegisterFragment.EMAIL_OWNER, DEFAULT_VALUE)
@@ -92,7 +95,7 @@ class RegisterFragment2 : Fragment() {
         }
     }
 
-    fun registerObserver(){
+    fun registerObserver() {
         // progress dialog
         val progressDialog = ProgressDialog(requireContext())
         progressDialog.setMessage("Please Wait...")
@@ -109,6 +112,7 @@ class RegisterFragment2 : Fragment() {
                                 "${it.data?.message}",
                                 Toast.LENGTH_SHORT
                             ).show()
+                            sharedPref.edit().clear().apply()
                             //show alert
                         }
                         400 -> {
