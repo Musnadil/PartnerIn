@@ -89,7 +89,7 @@ class RegisterFragment2 : Fragment() {
                 "",
                 lat.toString().toFloat(),
                 longi.toString().toFloat(),
-                3,
+                2,
                 "deactive"
             )
         }
