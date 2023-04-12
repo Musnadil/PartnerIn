@@ -74,24 +74,34 @@ class RegisterFragment2 : Fragment() {
         val longi = sharedPref.getString(RegisterFragment.LONGITUDE, DEFAULT_VALUE)
 
         binding.btnRegister.setOnClickListener {
-            viewModel.register(
-                0,
-                owner.toString(),
-                businessName.toString(),
-                emailOwner.toString(),
-                numberPhone.toString(),
-                businessType.toString(),
-                uriToFile(Uri.parse(uri), requireContext()),
-                password.toString(),
-                "",
-                "",
-                "",
-                "",
-                lat.toString().toFloat(),
-                longi.toString().toFloat(),
-                2,
-                "deactive"
-            )
+            AlertDialog.Builder(requireContext())
+                .setTitle("Pesan")
+                .setMessage(getString(R.string.pesan_register))
+                .setNegativeButton("Batal") { negativeButton, _ ->
+                    negativeButton.dismiss()
+                }
+                .setPositiveButton("Ok") { positiveButton, _ ->
+                    viewModel.register(
+                        0,
+                        owner.toString(),
+                        businessName.toString(),
+                        emailOwner.toString(),
+                        numberPhone.toString(),
+                        businessType.toString(),
+                        uriToFile(Uri.parse(uri), requireContext()),
+                        password.toString(),
+                        "",
+                        "",
+                        "",
+                        "",
+                        lat.toString().toFloat(),
+                        longi.toString().toFloat(),
+                        2,
+                        "deactive"
+                    )
+                    positiveButton.dismiss()
+                }
+                .show()
         }
     }
 
@@ -107,21 +117,24 @@ class RegisterFragment2 : Fragment() {
                     progressDialog.dismiss()
                     when (it.data?.code) {
                         200 -> {
-                            Toast.makeText(
-                                requireContext(),
-                                "${it.data?.message}",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            AlertDialog.Builder(requireContext())
+                                .setTitle("Pesan")
+                                .setMessage(getString(R.string.pesan_sukses_register))
+                                .setPositiveButton("Ok") { positiveButton, _ ->
+                                    positiveButton.dismiss()
+                                    findNavController().navigate(R.id.action_registerFragment2_to_loginFragment)
+                                }
+                                .show()
                             sharedPref.edit().clear().apply()
-                            //show alert
                         }
                         400 -> {
-                            Toast.makeText(
-                                requireContext(),
-                                "${it.data?.message}",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            //show alert
+                            AlertDialog.Builder(requireContext())
+                                .setTitle("Pesan")
+                                .setMessage(it.data?.message ?: "error")
+                                .setPositiveButton("Ok") { positiveButton, _ ->
+                                    positiveButton.dismiss()
+                                }
+                                .show()
                         }
                     }
                 }

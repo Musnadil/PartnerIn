@@ -24,4 +24,6 @@
         <item>Vihara</item>
         <item>Klenteng</item>
     </string-array>
+    <string name="pesan_register">Anda harus berada pada gerai anda, hal ini karena titik koordinat anda saat ini akan ditampilkan pada maps aplikasi TourIn. Klik Ok jika anda sudah berada pada gerai anda. Klik batal jika tidak.</string>
+    <string name="pesan_sukses_register">Terimakasih sudah mendaftarkan usaha anda pada kami. Selanjutnya tim kami akan meninjau gerai anda. Silahkan tunggu email konfirmasi dari kami bahwa akun anda telah aktif.</string>
 </resources>

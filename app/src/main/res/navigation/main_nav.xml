@@ -118,6 +118,8 @@
         android:label="fragment_register2"
         tools:layout="@layout/fragment_register2" >
         <action
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/registerFragment2"
             android:id="@+id/action_registerFragment2_to_loginFragment"
             app:destination="@id/loginFragment" />
         <action
