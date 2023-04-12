@@ -165,6 +165,7 @@
                         android:inputType="phone"
                         android:maxLines="1"
                         android:singleLine="true"
+                        android:maxLength="12"
                         android:textCursorDrawable="@drawable/custom_cursor_et"
                         android:textSize="16sp" />
                 </com.google.android.material.textfield.TextInputLayout>

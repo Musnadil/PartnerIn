@@ -190,6 +190,7 @@ class RegisterFragment : Fragment() {
         val businessType = binding.etTypeOfBusiness.text.toString()
         val password = binding.etPassword.text.toString()
         val confPassword = binding.etConfirmPassword.text.toString()
+        val passwordRegex = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,}".toRegex()
 
         if (businessOwner.isEmpty()) {
             binding.etConBusinessOwner.error = "Nama pemilik usaha tidak boleh kosong"
@@ -207,6 +208,8 @@ class RegisterFragment : Fragment() {
             binding.etConConfirmPassword.error = "Konfirmasi password tidak boleh kosong"
         } else if (password != confPassword) {
             binding.etConConfirmPassword.error = "Konfirmasi password tidak sama"
+        } else if (!passwordRegex.matches(password)){
+            binding.etConPassword.error = "Password harus mengandung huruf besar, kecil dan minimal 6 karakter"
         } else {
             val email = RequestEmailCheck(emailOwner)
             viewModel.emailCheck(email)
