@@ -2,6 +2,7 @@ package com.indexdev.partnerin.data
 
 import com.indexdev.partnerin.data.api.ApiHelper
 import com.indexdev.partnerin.data.model.request.RequestEmailCheck
+import com.indexdev.partnerin.data.model.request.RequestLogin
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
@@ -43,4 +44,6 @@ class Repository(private val apiHelper: ApiHelper) {
     )
 
     suspend fun emailCheck(email: RequestEmailCheck) = apiHelper.emailCheck(email)
+
+    suspend fun login(requestLogin: RequestLogin) = apiHelper.login(requestLogin)
 }

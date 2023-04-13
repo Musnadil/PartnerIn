@@ -1,8 +1,9 @@
 package com.indexdev.partnerin.data.api
 
-import com.google.gson.annotations.SerializedName
 import com.indexdev.partnerin.data.model.request.RequestEmailCheck
+import com.indexdev.partnerin.data.model.request.RequestLogin
 import com.indexdev.partnerin.data.model.response.ResponseEmailCheck
+import com.indexdev.partnerin.data.model.response.ResponseLogin
 import com.indexdev.partnerin.data.model.response.ResponseRegister
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -35,5 +36,8 @@ interface ApiService {
     ): ResponseRegister
 
     @POST("emailcheck")
-    suspend fun emailCheck(@Body email:RequestEmailCheck): ResponseEmailCheck
+    suspend fun emailCheck(@Body email: RequestEmailCheck): ResponseEmailCheck
+
+    @POST("loginmitra")
+    suspend fun login(@Body requestLogin: RequestLogin): ResponseLogin
 }

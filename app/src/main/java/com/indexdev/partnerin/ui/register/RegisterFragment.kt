@@ -112,7 +112,7 @@ class RegisterFragment : Fragment() {
 
         // progress dialog
         val progressDialog = ProgressDialog(requireContext())
-        progressDialog.setMessage("Please Wait...")
+        progressDialog.setMessage("Harap tunggu...")
         progressDialog.setCancelable(false)
 
         viewModel.responseEmailCheck.observe(viewLifecycleOwner) {
