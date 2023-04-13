@@ -45,4 +45,6 @@ class ApiHelper(private val apiService: ApiService) {
     suspend fun emailCheck(email: RequestEmailCheck) = apiService.emailCheck(email)
 
     suspend fun login(requestLogin: RequestLogin) = apiService.login(requestLogin)
+
+    suspend fun getUserById(id:Int) = apiService.getUserById(id)
 }

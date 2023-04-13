@@ -46,4 +46,6 @@ class Repository(private val apiHelper: ApiHelper) {
     suspend fun emailCheck(email: RequestEmailCheck) = apiHelper.emailCheck(email)
 
     suspend fun login(requestLogin: RequestLogin) = apiHelper.login(requestLogin)
+
+    suspend fun getUserById(id:Int) = apiHelper.getUserById(id)
 }
