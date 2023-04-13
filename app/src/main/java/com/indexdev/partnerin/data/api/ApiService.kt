@@ -1,11 +1,9 @@
 package com.indexdev.partnerin.data.api
 
+import com.indexdev.partnerin.data.model.request.RequestEditAccount
 import com.indexdev.partnerin.data.model.request.RequestEmailCheck
 import com.indexdev.partnerin.data.model.request.RequestLogin
-import com.indexdev.partnerin.data.model.response.ResponseEmailCheck
-import com.indexdev.partnerin.data.model.response.ResponseLogin
-import com.indexdev.partnerin.data.model.response.ResponseRegister
-import com.indexdev.partnerin.data.model.response.ResponseUserMitraById
+import com.indexdev.partnerin.data.model.response.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.*
@@ -41,4 +39,10 @@ interface ApiService {
 
     @GET("usermitra/{id}")
     suspend fun getUserById(@Path("id") id: Int): ResponseUserMitraById
+
+    @PUT("usermitra/{id}")
+    suspend fun editAccount(
+        @Path("id") id: Int,
+        @Body requestEditAccount: RequestEditAccount
+    ): ResponseEditAccount
 }

@@ -19,15 +19,17 @@ data class UserMitraById(
     @SerializedName("gambar")
     val gambar: String,
     @SerializedName("alamat")
-    val alamat: Any?,
+    val alamat: String,
     @SerializedName("hari_buka")
-    val hariBuka: Any?,
+    val hariBuka: String,
     @SerializedName("jam_buka")
-    val jamBuka: Any?,
+    val jamBuka: String,
     @SerializedName("jam_tutup")
-    val jamTutup: Any?,
+    val jamTutup: String,
     @SerializedName("lat")
     val lat: String,
     @SerializedName("longi")
-    val longi: String
+    val longi: String,
+    @SerializedName("status")
+    val status: String
 )

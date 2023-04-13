@@ -1,6 +1,7 @@
 package com.indexdev.partnerin.data
 
 import com.indexdev.partnerin.data.api.ApiHelper
+import com.indexdev.partnerin.data.model.request.RequestEditAccount
 import com.indexdev.partnerin.data.model.request.RequestEmailCheck
 import com.indexdev.partnerin.data.model.request.RequestLogin
 import okhttp3.MultipartBody
@@ -47,5 +48,8 @@ class Repository(private val apiHelper: ApiHelper) {
 
     suspend fun login(requestLogin: RequestLogin) = apiHelper.login(requestLogin)
 
-    suspend fun getUserById(id:Int) = apiHelper.getUserById(id)
+    suspend fun getUserById(id: Int) = apiHelper.getUserById(id)
+
+    suspend fun editAccount(id: Int, requestEditAccount: RequestEditAccount) =
+        apiHelper.editAccount(id, requestEditAccount)
 }
