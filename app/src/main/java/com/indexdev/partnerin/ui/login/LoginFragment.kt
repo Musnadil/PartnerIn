@@ -30,6 +30,8 @@ class LoginFragment : Fragment() {
     companion object {
         const val USER_SP = "USER_SP"
         const val ID_USER = "ID_USER"
+        const val ROLE = "ROLE"
+        const val DEFAULT_VALUE = "DEFAULT_VALUE"
     }
 
     override fun onCreateView(
@@ -61,11 +63,15 @@ class LoginFragment : Fragment() {
     private fun doLogin() {
         binding.etConEmailOwner.error = null
         binding.etConPassword.error = null
+        val passwordRegex = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,}".toRegex()
 
         if (binding.etEmailOwner.text.toString().isEmpty()) {
             binding.etConEmailOwner.error = "Email tidak boleh kosong"
         } else if (binding.etPassword.text.toString().isEmpty()) {
             binding.etConPassword.error = "Password tidak boleh kosong"
+        } else if (!passwordRegex.matches(binding.etPassword.text.toString())) {
+            binding.etConPassword.error =
+                "Password harus mengandung huruf besar, kecil dan minimal 6 karakter"
         } else {
             val requestLogin = RequestLogin(
                 binding.etEmailOwner.text.toString(),
@@ -100,8 +106,8 @@ class LoginFragment : Fragment() {
                                 .show()
                         }
                         200 -> {
-                            sharedPref.edit().putString(ID_USER, it.data.idMitra)
-                                .apply()
+                            sharedPref.edit().putString(ID_USER, it.data.idMitra).apply()
+                            sharedPref.edit().putString(ROLE, it.data.role).apply()
                             when (it.data.role) {
                                 "0" -> {
                                     findNavController().navigate(R.id.action_loginFragment_to_superAdminHomeFragment)
