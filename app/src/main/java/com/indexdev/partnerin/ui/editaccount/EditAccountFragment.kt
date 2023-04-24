@@ -54,6 +54,12 @@ class EditAccountFragment : Fragment() {
         if (statusBarHeight > 0) {
             binding.statusbar.layoutParams.height = resources.getDimensionPixelSize(statusBarHeight)
         }
+        val navigationBarHeight =
+            resources.getIdentifier("navigation_bar_height", "dimen", "android")
+        if (navigationBarHeight > 0) {
+            binding.bottomNavBar.layoutParams.height =
+                resources.getDimensionPixelSize(navigationBarHeight)
+        }
         binding.btnBack.setOnClickListener {
             findNavController().popBackStack()
         }
