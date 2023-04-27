@@ -20,7 +20,10 @@ class MainActivity : AppCompatActivity() {
         R.id.splashScreenFragment,
         R.id.registerFragment,
         R.id.loginFragment,
-        R.id.registerFragment2
+        R.id.registerFragment2,
+        R.id.forgotPasswordFragment,
+        R.id.verifyOtpFragment,
+        R.id.newPasswordFragment,
     )
     private val listFragmentNoMenu = listOf(
         R.id.addProductFragment,

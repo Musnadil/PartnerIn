@@ -81,6 +81,11 @@
             app:exitAnim="@anim/zoom_out"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -187,4 +192,41 @@
         android:name="com.indexdev.partnerin.ui.superadmindisable.SuperAdminDisableFragment"
         android:label="fragment_super_admin_disable"
         tools:layout="@layout/fragment_super_admin_disable" />
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.indexdev.partnerin.ui.forgotpassword.ForgotPasswordFragment"
+        android:label="fragment_forgot_password"
+        tools:layout="@layout/fragment_forgot_password" >
+        <action
+            android:id="@+id/action_forgotPasswordFragment_to_verifyOtpFragment"
+            app:destination="@id/verifyOtpFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/verifyOtpFragment"
+        android:name="com.indexdev.partnerin.ui.forgotpassword.VerifyOtpFragment"
+        android:label="fragment_verify_otp"
+        tools:layout="@layout/fragment_verify_otp" >
+        <action
+            android:id="@+id/action_verifyOtpFragment_to_newPasswordFragment"
+            app:destination="@id/newPasswordFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popUpTo="@id/verifyOtpFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/newPasswordFragment"
+        android:name="com.indexdev.partnerin.ui.forgotpassword.NewPasswordFragment"
+        android:label="fragment_new_password"
+        tools:layout="@layout/fragment_new_password" >
+        <action
+            android:id="@+id/action_newPasswordFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/right_slide_in"
+            app:exitAnim="@anim/right_slide_out"
+            app:popUpTo="@id/newPasswordFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>
