@@ -18,16 +18,19 @@
         <entry key="..\:/KULIAH/SMT7(Magang)/Android Studio/PartnerIn/app/src/main/res/layout/fragment_edit_account.xml" value="0.16041666666666668" />
         <entry key="..\:/KULIAH/SMT7(Magang)/Android Studio/PartnerIn/app/src/main/res/layout/fragment_edit_marker.xml" value="0.1527777777777778" />
         <entry key="..\:/KULIAH/SMT7(Magang)/Android Studio/PartnerIn/app/src/main/res/layout/fragment_edit_product.xml" value="0.16041666666666668" />
+        <entry key="..\:/KULIAH/SMT7(Magang)/Android Studio/PartnerIn/app/src/main/res/layout/fragment_forgot_password.xml" value="0.1716612377850163" />
         <entry key="..\:/KULIAH/SMT7(Magang)/Android Studio/PartnerIn/app/src/main/res/layout/fragment_home.xml" value="0.16527777777777777" />
-        <entry key="..\:/KULIAH/SMT7(Magang)/Android Studio/PartnerIn/app/src/main/res/layout/fragment_login.xml" value="0.16527777777777777" />
+        <entry key="..\:/KULIAH/SMT7(Magang)/Android Studio/PartnerIn/app/src/main/res/layout/fragment_login.xml" value="0.1716612377850163" />
         <entry key="..\:/KULIAH/SMT7(Magang)/Android Studio/PartnerIn/app/src/main/res/layout/fragment_manager_home.xml" value="0.1527777777777778" />
+        <entry key="..\:/KULIAH/SMT7(Magang)/Android Studio/PartnerIn/app/src/main/res/layout/fragment_new_password.xml" value="0.1716612377850163" />
         <entry key="..\:/KULIAH/SMT7(Magang)/Android Studio/PartnerIn/app/src/main/res/layout/fragment_profile.xml" value="0.2101851851851852" />
-        <entry key="..\:/KULIAH/SMT7(Magang)/Android Studio/PartnerIn/app/src/main/res/layout/fragment_register.xml" value="0.1597222222222222" />
+        <entry key="..\:/KULIAH/SMT7(Magang)/Android Studio/PartnerIn/app/src/main/res/layout/fragment_register.xml" value="0.17335526315789473" />
         <entry key="..\:/KULIAH/SMT7(Magang)/Android Studio/PartnerIn/app/src/main/res/layout/fragment_register2.xml" value="0.1597222222222222" />
         <entry key="..\:/KULIAH/SMT7(Magang)/Android Studio/PartnerIn/app/src/main/res/layout/fragment_splash_screen.xml" value="0.14097222222222222" />
         <entry key="..\:/KULIAH/SMT7(Magang)/Android Studio/PartnerIn/app/src/main/res/layout/fragment_super_admin_approval.xml" value="0.1597222222222222" />
         <entry key="..\:/KULIAH/SMT7(Magang)/Android Studio/PartnerIn/app/src/main/res/layout/fragment_super_admin_disable.xml" value="0.15763888888888888" />
         <entry key="..\:/KULIAH/SMT7(Magang)/Android Studio/PartnerIn/app/src/main/res/layout/fragment_super_admin_home.xml" value="0.1597222222222222" />
+        <entry key="..\:/KULIAH/SMT7(Magang)/Android Studio/PartnerIn/app/src/main/res/layout/fragment_verify_otp.xml" value="0.1716612377850163" />
         <entry key="..\:/KULIAH/SMT7(Magang)/Android Studio/PartnerIn/app/src/main/res/layout/item_marker.xml" value="0.2037037037037037" />
         <entry key="..\:/KULIAH/SMT7(Magang)/Android Studio/PartnerIn/app/src/main/res/layout/item_product.xml" value="0.16527777777777777" />
         <entry key="..\:/KULIAH/SMT7(Magang)/Android Studio/PartnerIn/app/src/main/res/menu/bottom_nav_menu.xml" value="0.18796296296296297" />
