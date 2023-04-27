@@ -101,4 +101,7 @@ dependencies {
     //Mockk
     testImplementation "io.mockk:mockk:1.12.4"
 
+    //otp ui
+    implementation 'io.github.chaosleung:pinview:1.4.4'
+
 }
