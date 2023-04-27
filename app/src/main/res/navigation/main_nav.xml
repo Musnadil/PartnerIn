@@ -201,7 +201,13 @@
             android:id="@+id/action_forgotPasswordFragment_to_verifyOtpFragment"
             app:destination="@id/verifyOtpFragment"
             app:enterAnim="@anim/slide_in"
-            app:exitAnim="@anim/slide_out" />
+            app:exitAnim="@anim/slide_out"
+            app:popUpTo="@id/forgotPasswordFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_forgotPasswordFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/verifyOtpFragment"
@@ -213,6 +219,11 @@
             app:destination="@id/newPasswordFragment"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out"
+            app:popUpTo="@id/verifyOtpFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_verifyOtpFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment"
             app:popUpTo="@id/verifyOtpFragment"
             app:popUpToInclusive="true" />
     </fragment>

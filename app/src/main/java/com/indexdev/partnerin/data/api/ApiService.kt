@@ -45,4 +45,7 @@ interface ApiService {
         @Path("id") id: Int,
         @Body requestEditAccount: RequestEditAccount
     ): ResponseEditAccount
+
+    @POST("forgotpassword")
+    suspend fun forgotPassword(@Body email: RequestEmailCheck): ResponseForgotPassword
 }

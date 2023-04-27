@@ -52,4 +52,6 @@ class Repository(private val apiHelper: ApiHelper) {
 
     suspend fun editAccount(id: Int, requestEditAccount: RequestEditAccount) =
         apiHelper.editAccount(id, requestEditAccount)
+
+    suspend fun forgotPassword(email: RequestEmailCheck) = apiHelper.forgotPassword(email)
 }

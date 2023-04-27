@@ -51,4 +51,6 @@ class ApiHelper(private val apiService: ApiService) {
 
     suspend fun editAccount(id: Int, requestEditAccount: RequestEditAccount) =
         apiService.editAccount(id, requestEditAccount)
+
+    suspend fun forgotPassword(email: RequestEmailCheck) = apiService.forgotPassword(email)
 }
