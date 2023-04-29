@@ -41,10 +41,10 @@ class ForgotPasswordFragment : Fragment() {
             binding.statusbar.layoutParams.height = resources.getDimensionPixelSize(statusBarHeight)
         }
         binding.btnBack.setOnClickListener {
-            findNavController().popBackStack()
+            findNavController().navigate(R.id.action_forgotPasswordFragment_to_loginFragment)
         }
         binding.btnLogin.setOnClickListener {
-            findNavController().popBackStack()
+            findNavController().navigate(R.id.action_forgotPasswordFragment_to_loginFragment)
         }
         emailObserver()
         binding.btnSend.setOnClickListener {
@@ -53,9 +53,6 @@ class ForgotPasswordFragment : Fragment() {
     }
 
     private fun emailObserver() {
-        if (viewModel.responseForgotPassword.hasObservers()) {
-            viewModel.responseForgotPassword.removeObservers(viewLifecycleOwner)
-        }
         // progress dialog
         val progressDialog = ProgressDialog(requireContext())
         progressDialog.setMessage("Harap tunggu...")
@@ -74,10 +71,10 @@ class ForgotPasswordFragment : Fragment() {
                         }
                         200 -> {
                             bundle.putString(EMAIL_BUNDLE, binding.etEmailOwner.text.toString())
-                            findNavController().navigate(
-                                R.id.action_forgotPasswordFragment_to_verifyOtpFragment,
-                                bundle
-                            )
+                                findNavController().navigate(
+                                    R.id.action_forgotPasswordFragment_to_verifyOtpFragment,
+                                    bundle
+                                )
                         }
                     }
                 }

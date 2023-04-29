@@ -4,6 +4,7 @@ import com.indexdev.partnerin.data.api.ApiHelper
 import com.indexdev.partnerin.data.model.request.RequestEditAccount
 import com.indexdev.partnerin.data.model.request.RequestEmailCheck
 import com.indexdev.partnerin.data.model.request.RequestLogin
+import com.indexdev.partnerin.data.model.request.RequestVerifyOtp
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
@@ -54,4 +55,6 @@ class Repository(private val apiHelper: ApiHelper) {
         apiHelper.editAccount(id, requestEditAccount)
 
     suspend fun forgotPassword(email: RequestEmailCheck) = apiHelper.forgotPassword(email)
+
+    suspend fun verifyOtp(requestVerifyOtp: RequestVerifyOtp) = apiHelper.verifyOtp(requestVerifyOtp)
 }
