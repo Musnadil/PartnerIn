@@ -1,9 +1,6 @@
 package com.indexdev.partnerin.data.api
 
-import com.indexdev.partnerin.data.model.request.RequestEditAccount
-import com.indexdev.partnerin.data.model.request.RequestEmailCheck
-import com.indexdev.partnerin.data.model.request.RequestLogin
-import com.indexdev.partnerin.data.model.request.RequestVerifyOtp
+import com.indexdev.partnerin.data.model.request.*
 import com.indexdev.partnerin.data.model.response.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -52,4 +49,7 @@ interface ApiService {
 
     @POST("verifyotp")
     suspend fun verifyOtp(@Body requestVerifyOtp: RequestVerifyOtp): ResponseVerifyOtp
+
+    @POST("newpassword")
+    suspend fun newPassword(@Body requestNewPassword: RequestNewPassword): ResponseNewPassword
 }

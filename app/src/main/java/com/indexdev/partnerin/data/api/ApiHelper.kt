@@ -1,9 +1,6 @@
 package com.indexdev.partnerin.data.api
 
-import com.indexdev.partnerin.data.model.request.RequestEditAccount
-import com.indexdev.partnerin.data.model.request.RequestEmailCheck
-import com.indexdev.partnerin.data.model.request.RequestLogin
-import com.indexdev.partnerin.data.model.request.RequestVerifyOtp
+import com.indexdev.partnerin.data.model.request.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
@@ -55,5 +52,9 @@ class ApiHelper(private val apiService: ApiService) {
 
     suspend fun forgotPassword(email: RequestEmailCheck) = apiService.forgotPassword(email)
 
-    suspend fun verifyOtp(requestVerifyOtp: RequestVerifyOtp) = apiService.verifyOtp(requestVerifyOtp)
+    suspend fun verifyOtp(requestVerifyOtp: RequestVerifyOtp) =
+        apiService.verifyOtp(requestVerifyOtp)
+
+    suspend fun newPassword(requestNewPassword: RequestNewPassword) =
+        apiService.newPassword(requestNewPassword)
 }

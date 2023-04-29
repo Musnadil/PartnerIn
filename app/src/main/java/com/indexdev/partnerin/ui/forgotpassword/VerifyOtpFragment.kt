@@ -16,6 +16,7 @@ import com.indexdev.partnerin.data.api.Status.*
 import com.indexdev.partnerin.data.model.request.RequestEmailCheck
 import com.indexdev.partnerin.data.model.request.RequestVerifyOtp
 import com.indexdev.partnerin.databinding.FragmentVerifyOtpBinding
+import com.indexdev.partnerin.ui.forgotpassword.ForgotPasswordFragment.Companion.EMAIL_BUNDLE
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,6 +24,7 @@ class VerifyOtpFragment : Fragment() {
     private var _binding: FragmentVerifyOtpBinding? = null
     private val binding get() = _binding!!
     private val viewModel: VerifyOtpViewModel by viewModels()
+    private val bundle = Bundle()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -101,7 +103,11 @@ class VerifyOtpFragment : Fragment() {
                                 .show()
                         }
                         200 -> {
-                            findNavController().navigate(R.id.action_verifyOtpFragment_to_newPasswordFragment)
+                            bundle.putString(
+                                EMAIL_BUNDLE,
+                                arguments?.getString(EMAIL_BUNDLE).toString()
+                            )
+                            findNavController().navigate(R.id.action_verifyOtpFragment_to_newPasswordFragment,bundle)
                         }
 
                     }
