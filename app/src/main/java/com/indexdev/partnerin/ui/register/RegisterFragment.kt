@@ -194,6 +194,10 @@ class RegisterFragment : Fragment() {
 
         if (businessOwner.isEmpty()) {
             binding.etConBusinessOwner.error = "Nama pemilik usaha tidak boleh kosong"
+        } else if (businessName.length < 3) {
+            binding.etConBusinessOwner.error = "Nama terlalu pendek"
+        } else if (!businessOwner.matches("[a-zA-Z ]+".toRegex())) {
+            binding.etConBusinessOwner.error = "Nama tidak boleh ada karakter selain huruf"
         } else if (businessName.isEmpty()) {
             binding.etConBusinessName.error = "Nama usaha tidak boleh kosong"
         } else if (emailOwner.isEmpty()) {
@@ -208,15 +212,16 @@ class RegisterFragment : Fragment() {
             binding.etConConfirmPassword.error = "Konfirmasi password tidak boleh kosong"
         } else if (password != confPassword) {
             binding.etConConfirmPassword.error = "Konfirmasi password tidak sama"
-        } else if (!passwordRegex.matches(password)){
-            binding.etConPassword.error = "Password harus mengandung huruf besar, kecil dan minimal 6 karakter"
+        } else if (!passwordRegex.matches(password)) {
+            binding.etConPassword.error =
+                "Password harus mengandung huruf besar, kecil dan minimal 6 karakter"
         } else {
             val email = RequestEmailCheck(emailOwner)
             viewModel.emailCheck(email)
         }
     }
 
-    fun resetError() {
+    private fun resetError() {
         binding.etConBusinessOwner.error = null
         binding.etConBusinessName.error = null
         binding.etConEmailOwner.error = null

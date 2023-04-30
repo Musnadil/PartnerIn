@@ -164,6 +164,7 @@
                         android:imeOptions="actionDone"
                         android:inputType="phone"
                         android:maxLength="12"
+                        android:digits="1234567890"
                         android:maxLines="1"
                         android:singleLine="true"
                         android:textCursorDrawable="@drawable/custom_cursor_et"
