@@ -87,6 +87,9 @@ class NewPasswordFragment : Fragment() {
     }
 
     private fun doPasswordChange() {
+        binding.etConConfPassword.error = null
+        binding.etConPassword.error = null
+
         val newPassword = binding.etPassword.text.toString()
         val confirmPassword = binding.etConfPassword.text.toString()
         val passwordRegex = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,}".toRegex()

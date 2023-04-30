@@ -11,14 +11,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
-import com.indexdev.partnerin.data.api.Status
+import com.indexdev.partnerin.data.api.Status.*
+import com.indexdev.partnerin.data.model.request.RequestEditAccount
 import com.indexdev.partnerin.databinding.FragmentAccountSettingsBinding
 import com.indexdev.partnerin.ui.login.LoginFragment
+import com.indexdev.partnerin.ui.login.LoginFragment.Companion.DEFAULT_VALUE
+import com.indexdev.partnerin.ui.login.LoginFragment.Companion.ID_USER
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,6 +32,7 @@ class AccountSettingsFragment : Fragment() {
     private val viewModel: AccountSettingsViewModel by viewModels()
     private lateinit var sharedPref: SharedPreferences
     private lateinit var progressDialog: ProgressDialog
+    private val arrayOfDay: MutableList<String> = ArrayList()
 
     private var kodeWisata = ""
     private var namaUsaha = ""
@@ -68,11 +73,14 @@ class AccountSettingsFragment : Fragment() {
         progressDialog.setCancelable(false)
         progressDialog.setMessage("Harap tunggu...")
 
-        getUserById()
         userObserver()
-//        updateAccount()
-//        responseEditObserver()
+        getUserById()
+        updateAccountObserver()
         setupDatePicker()
+
+        binding.btnSave.setOnClickListener {
+            updateAccount()
+        }
     }
 
     @SuppressLint("SetTextI18n")
@@ -138,18 +146,13 @@ class AccountSettingsFragment : Fragment() {
     }
 
     private fun getUserById() {
-        viewModel.getUserById(
-            sharedPref.getString(
-                LoginFragment.ID_USER,
-                LoginFragment.DEFAULT_VALUE
-            ).toString().toInt()
-        )
+        viewModel.getUserById(sharedPref.getString(ID_USER, DEFAULT_VALUE).toString().toInt())
     }
 
     private fun userObserver() {
         viewModel.responseUserById.observe(viewLifecycleOwner) {
             when (it.status) {
-                Status.SUCCESS -> {
+                SUCCESS -> {
                     progressDialog.dismiss()
                     when (it.data?.code) {
                         200 -> {
@@ -198,7 +201,7 @@ class AccountSettingsFragment : Fragment() {
                         }
                     }
                 }
-                Status.ERROR -> {
+                ERROR -> {
                     progressDialog.dismiss()
                     AlertDialog.Builder(requireContext())
                         .setTitle("Pesan")
@@ -208,7 +211,80 @@ class AccountSettingsFragment : Fragment() {
                         }
                         .show()
                 }
-                Status.LOADING -> {
+                LOADING -> {
+                    progressDialog.show()
+                }
+            }
+        }
+    }
+
+    private fun updateAccount() {
+        val address = binding.etAddress.text.toString()
+        if (binding.cbSunday.isChecked) arrayOfDay.add("minggu")
+        if (binding.cbMonday.isChecked) arrayOfDay.add("senin")
+        if (binding.cbTuesday.isChecked) arrayOfDay.add("selasa")
+        if (binding.cbWednesday.isChecked) arrayOfDay.add("rabu")
+        if (binding.cbThursday.isChecked) arrayOfDay.add("kamis")
+        if (binding.cbFriday.isChecked) arrayOfDay.add("jumat")
+        if (binding.cbSaturday.isChecked) arrayOfDay.add("sabtu")
+
+        val dayOpen = arrayOfDay.joinToString(",")
+        val openingHours = binding.etOpeningHours.text.toString()
+        val closingHours = binding.etClosingHours.text.toString()
+        binding.etConAddress.error = null
+        binding.tvErrorOpeningHours.text = null
+        binding.tvErrorClosingHours.text = null
+
+        if (address.isEmpty()) {
+            binding.etConAddress.error = "Alamat tidak boleh kosong"
+        } else if (openingHours.isEmpty()) {
+            binding.tvErrorOpeningHours.text = "Jam buka tidak boleh kosong"
+        } else if (closingHours.isEmpty()) {
+            binding.tvErrorClosingHours.text = "Jam tutup tidak boleh kosong"
+        } else {
+            val requestEditAccount = RequestEditAccount(
+                kodeWisata.toInt(),
+                namaUsaha,
+                emailPemilik,
+                noPonsel,
+                address,
+                dayOpen,
+                openingHours,
+                closingHours,
+                status
+            )
+            val idUser = sharedPref.getString(ID_USER, DEFAULT_VALUE).toString().toInt()
+            viewModel.editAccount(idUser, requestEditAccount)
+        }
+    }
+
+    private fun updateAccountObserver() {
+        viewModel.responseEditAccount.observe(viewLifecycleOwner) {
+            when (it.status) {
+                SUCCESS -> {
+                    progressDialog.dismiss()
+                    when (it.data?.code) {
+                        200 -> {
+                            Toast.makeText(
+                                requireContext(),
+                                "Pengaturan akun berhasil diubah",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            findNavController().popBackStack()
+                        }
+                    }
+                }
+                ERROR -> {
+                    progressDialog.dismiss()
+                    AlertDialog.Builder(requireContext())
+                        .setTitle("Pesan")
+                        .setMessage(it.message ?: "error")
+                        .setPositiveButton("Ok") { positiveButton, _ ->
+                            positiveButton.dismiss()
+                        }
+                        .show()
+                }
+                LOADING -> {
                     progressDialog.show()
                 }
             }
