@@ -237,6 +237,8 @@ class AccountSettingsFragment : Fragment() {
 
         if (address.isEmpty()) {
             binding.etConAddress.error = "Alamat tidak boleh kosong"
+        } else if (address.length < 15) {
+            binding.etConAddress.error = "Alamat terlalu singkat"
         } else if (openingHours.isEmpty()) {
             binding.tvErrorOpeningHours.text = "Jam buka tidak boleh kosong"
         } else if (closingHours.isEmpty()) {
