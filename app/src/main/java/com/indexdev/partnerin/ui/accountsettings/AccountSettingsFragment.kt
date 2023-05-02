@@ -11,12 +11,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
+import com.indexdev.partnerin.R
 import com.indexdev.partnerin.data.api.Status.*
 import com.indexdev.partnerin.data.model.request.RequestEditAccount
 import com.indexdev.partnerin.databinding.FragmentAccountSettingsBinding
@@ -67,6 +69,8 @@ class AccountSettingsFragment : Fragment() {
         binding.btnBack.setOnClickListener {
             findNavController().popBackStack()
         }
+
+
         sharedPref =
             requireContext().getSharedPreferences(LoginFragment.USER_SP, Context.MODE_PRIVATE)
         progressDialog = ProgressDialog(requireContext())
@@ -165,7 +169,42 @@ class AccountSettingsFragment : Fragment() {
                             jamBuka = it.data.userMitraById.jamBuka
                             jamTutup = it.data.userMitraById.jamTutup
                             status = it.data.userMitraById.status
-
+                            when (it.data.userMitraById.kodeWisata) {
+                                "101" -> {
+                                    binding.etDropdownTour.setText("Danau Toba")
+                                }
+                                "102" -> {
+                                    binding.etDropdownTour.setText("Pantai Tanjung Kelayang")
+                                }
+                                "103" -> {
+                                    binding.etDropdownTour.setText("Pantai Tanjung Lesung")
+                                }
+                                "104" -> {
+                                    binding.etDropdownTour.setText("Pulau Seribu")
+                                }
+                                "105" -> {
+                                    binding.etDropdownTour.setText("Candi Borobudur")
+                                }
+                                "106" -> {
+                                    binding.etDropdownTour.setText("Taman Nasional Bromo Tengger Semeru")
+                                }
+                                "107" -> {
+                                    binding.etDropdownTour.setText("Pantai Kuta Mandalika")
+                                }
+                                "108" -> {
+                                    binding.etDropdownTour.setText("Labuan Bajo")
+                                }
+                                "109" -> {
+                                    binding.etDropdownTour.setText("Wakatobi")
+                                }
+                                "110" -> {
+                                    binding.etDropdownTour.setText("Morotai")
+                                }
+                            }
+                            val wisata = resources.getStringArray(R.array.wisata)
+                            val arrayAdapter =
+                                ArrayAdapter(requireContext(), R.layout.dropdown_item, wisata)
+                            binding.etDropdownTour.setAdapter(arrayAdapter)
                             binding.etOpeningHours.text = it.data.userMitraById.jamBuka
                             binding.etClosingHours.text = it.data.userMitraById.jamTutup
                             binding.etAddress.setText(it.data.userMitraById.alamat)
@@ -219,6 +258,7 @@ class AccountSettingsFragment : Fragment() {
     }
 
     private fun updateAccount() {
+        val tour = binding.etDropdownTour.text.toString()
         val address = binding.etAddress.text.toString()
         if (binding.cbSunday.isChecked) arrayOfDay.add("minggu")
         if (binding.cbMonday.isChecked) arrayOfDay.add("senin")
@@ -235,7 +275,45 @@ class AccountSettingsFragment : Fragment() {
         binding.tvErrorOpeningHours.text = null
         binding.tvErrorClosingHours.text = null
 
-        if (address.isEmpty()) {
+        val tourCode = when (tour) {
+            "Danau Toba" -> {
+                101
+            }
+            "Pantai Tanjung Kelayang" -> {
+                102
+            }
+            "Pantai Tanjung Lesung" -> {
+                103
+            }
+            "Pulau Seribu" -> {
+                104
+            }
+            "Candi Borobudur" -> {
+                105
+            }
+            "Taman Nasional Bromo Tengger Semeru" -> {
+                106
+            }
+            "Pantai Kuta Mandalika" -> {
+                107
+            }
+            "Labuan Bajo" -> {
+                108
+            }
+            "Wakatobi" -> {
+                109
+            }
+            "Morotai" -> {
+                110
+            }
+            else -> {
+                0
+            }
+        }
+
+        if (tour.isEmpty()) {
+            binding.etTourContainer.error = "Tempat wisata tidak boleh kosong"
+        } else if (address.isEmpty()) {
             binding.etConAddress.error = "Alamat tidak boleh kosong"
         } else if (address.length < 15) {
             binding.etConAddress.error = "Alamat terlalu singkat"
@@ -245,7 +323,7 @@ class AccountSettingsFragment : Fragment() {
             binding.tvErrorClosingHours.text = "Jam tutup tidak boleh kosong"
         } else {
             val requestEditAccount = RequestEditAccount(
-                kodeWisata.toInt(),
+                tourCode,
                 namaUsaha,
                 emailPemilik,
                 noPonsel,

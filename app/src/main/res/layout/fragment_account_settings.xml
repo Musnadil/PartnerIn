@@ -50,8 +50,8 @@
             android:orientation="horizontal">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_con_address"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:id="@+id/et_tour_container"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -60,10 +60,34 @@
                 app:boxCornerRadiusBottomStart="16dp"
                 app:boxCornerRadiusTopEnd="16dp"
                 app:boxCornerRadiusTopStart="16dp"
+                app:errorEnabled="true"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <AutoCompleteTextView
+                    android:id="@+id/et_dropdown_tour"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Wisata"
+                    android:inputType="none"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_con_address"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusTopStart="16dp"
                 app:counterEnabled="true"
                 app:counterMaxLength="250"
                 app:errorEnabled="true"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/et_tour_container">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_address"
@@ -71,10 +95,10 @@
                     android:layout_height="match_parent"
                     android:gravity="top"
                     android:hint="Alamat"
-                    android:maxLines="5"
-                    android:minLines="5"
                     android:inputType="text|textMultiLine"
-                    android:maxLength="250" />
+                    android:maxLength="250"
+                    android:maxLines="5"
+                    android:minLines="5" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -214,9 +238,9 @@
                 android:id="@+id/tv_error_opening_hours"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
                 android:textColor="@color/red"
                 android:textSize="12sp"
-                android:layout_marginStart="12dp"
                 app:layout_constraintStart_toStartOf="@id/et_opening_hours"
                 app:layout_constraintTop_toBottomOf="@id/et_opening_hours" />
 
@@ -248,9 +272,9 @@
                 android:id="@+id/tv_error_closing_hours"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
                 android:textColor="@color/red"
                 android:textSize="12sp"
-                android:layout_marginStart="12dp"
                 app:layout_constraintStart_toStartOf="@id/et_closing_hours"
                 app:layout_constraintTop_toBottomOf="@id/et_closing_hours" />
 
