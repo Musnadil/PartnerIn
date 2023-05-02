@@ -61,4 +61,19 @@ class Repository(private val apiHelper: ApiHelper) {
 
     suspend fun getProductByIdMitra(id: Int) = apiHelper.getProductByIdMitra(id)
 
+    suspend fun addProduct(
+        idMitra: Int,
+        namaProduk: RequestBody,
+        harga: RequestBody,
+        satuan: RequestBody,
+        deskripsi: RequestBody,
+        file: MultipartBody.Part
+    ) = apiHelper.addProduct(
+        idMitra = idMitra,
+        namaProduk = namaProduk,
+        harga = harga,
+        satuan = satuan,
+        deskripsi = deskripsi,
+        file = file
+    )
 }

@@ -60,4 +60,19 @@ class ApiHelper(private val apiService: ApiService) {
 
     suspend fun getProductByIdMitra(id: Int) = apiService.getProductByIdMitra(id)
 
+    suspend fun addProduct(
+        idMitra: Int,
+        namaProduk: RequestBody,
+        harga: RequestBody,
+        satuan: RequestBody,
+        deskripsi: RequestBody,
+        file: MultipartBody.Part
+    ) = apiService.addProduct(
+        idMitra = idMitra,
+        namaProduk = namaProduk,
+        harga = harga,
+        satuan = satuan,
+        deskripsi = deskripsi,
+        file = file
+    )
 }

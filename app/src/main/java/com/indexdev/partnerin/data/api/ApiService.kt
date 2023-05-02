@@ -57,4 +57,15 @@ interface ApiService {
     // product
     @GET("produkByIdMitra/{id}")
     suspend fun getProductByIdMitra(@Path("id") id: Int): Response<List<ResponseProductByIdMitra>>
+
+    @Multipart
+    @POST("produk")
+    suspend fun addProduct(
+        @Part("id_mitra") idMitra: Int,
+        @Part("nama_produk") namaProduk: RequestBody?,
+        @Part("harga") harga: RequestBody?,
+        @Part("satuan") satuan: RequestBody?,
+        @Part("deskripsi") deskripsi: RequestBody?,
+        @Part file: MultipartBody.Part
+    ): ResponseAddProduct
 }
