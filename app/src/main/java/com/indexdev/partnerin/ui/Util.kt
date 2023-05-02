@@ -13,6 +13,8 @@ import android.view.Window
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import java.io.*
+import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -72,3 +74,15 @@ private val timeStamp: String = SimpleDateFormat(
     FILENAME_FORMAT,
     Locale.US
 ).format(System.currentTimeMillis())
+
+fun currency(angka: Int): String {
+    val kursIndonesia = DecimalFormat.getCurrencyInstance() as DecimalFormat
+    val formatRp = DecimalFormatSymbols()
+
+    formatRp.currencySymbol = "Rp "
+    formatRp.monetaryDecimalSeparator = ','
+    formatRp.groupingSeparator = '.'
+
+    kursIndonesia.decimalFormatSymbols = formatRp
+    return kursIndonesia.format(angka).dropLast(3)
+}

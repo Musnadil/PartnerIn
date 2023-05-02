@@ -15,7 +15,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.indexdev.partnerin.R
-import com.indexdev.partnerin.data.api.Status
+import com.indexdev.partnerin.data.api.Status.*
+import com.indexdev.partnerin.data.model.response.ResponseProductByIdMitra
 import com.indexdev.partnerin.databinding.FragmentHomeBinding
 import com.indexdev.partnerin.ui.login.LoginFragment
 import com.indexdev.partnerin.ui.login.LoginFragment.Companion.DEFAULT_VALUE
@@ -26,9 +27,11 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+    private val viewModel: HomeViewModel by viewModels()
     private lateinit var sharedPref: SharedPreferences
     private lateinit var progressDialog: ProgressDialog
-    private val viewModel: HomeViewModel by viewModels()
+    private lateinit var productAdapter: ProductAdapter
+    private val listProduct: MutableList<ResponseProductByIdMitra> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,10 +53,90 @@ class HomeFragment : Fragment() {
         progressDialog.setMessage("Harap tunggu...")
         progressDialog.setCancelable(false)
 
-
         binding.btnFabAdd.setOnClickListener {
             observeUser()
         }
+
+        getProduct()
+        detailProduct()
+    }
+
+    private fun getProduct() {
+        binding.pbLoading.visibility = View.VISIBLE
+        binding.rvProduct.visibility = View.GONE
+        viewModel.getProductByIdMitra(
+            sharedPref.getString(ID_USER, DEFAULT_VALUE).toString().toInt()
+        )
+        viewModel.responseProductByIdMitra.removeObservers(viewLifecycleOwner)
+        Handler(Looper.getMainLooper()).postDelayed({
+            viewModel.responseProductByIdMitra.observe(viewLifecycleOwner) {
+                when (it.status) {
+                    SUCCESS -> {
+                        when (it.data?.code()) {
+                            200 -> {
+                                if (it.data.body() != null) {
+                                    listProduct.clear()
+                                    listProduct.addAll(it.data.body()!!)
+                                    Handler(Looper.getMainLooper()).postDelayed({
+                                        productAdapter.submitData(listProduct)
+                                        binding.pbLoading.visibility = View.GONE
+                                        binding.rvProduct.visibility = View.VISIBLE
+                                    }, 1000)
+                                    viewModel.responseProductByIdMitra.removeObservers(
+                                        viewLifecycleOwner
+                                    )
+                                }
+                            }
+                            404 -> {
+                                viewModel.responseProductByIdMitra.removeObservers(
+                                    viewLifecycleOwner
+                                )
+                                binding.pbLoading.visibility = View.GONE
+                                binding.rvProduct.visibility = View.VISIBLE
+                                AlertDialog.Builder(requireContext())
+                                    .setTitle("Pesan")
+                                    .setMessage("Anda belum memiliki produk")
+                                    .setPositiveButton("Ok") { positiveButton, _ ->
+                                        positiveButton.dismiss()
+                                    }
+                                    .show()
+                            }
+                        }
+                    }
+
+                    ERROR -> {
+                        viewModel.responseProductByIdMitra.removeObservers(viewLifecycleOwner)
+                        binding.pbLoading.visibility = View.GONE
+                        binding.rvProduct.visibility = View.VISIBLE
+                        AlertDialog.Builder(requireContext())
+                            .setTitle("Pesan")
+                            .setMessage(it.message ?: "Error")
+                            .setPositiveButton("Ok") { positiveButton, _ ->
+                                positiveButton.dismiss()
+                            }
+                            .show()
+                    }
+
+                    LOADING -> {
+                        binding.pbLoading.visibility = View.VISIBLE
+                        binding.rvProduct.visibility = View.GONE
+                    }
+                }
+            }
+        }, 1000)
+    }
+
+    private fun detailProduct() {
+        productAdapter = ProductAdapter(object : ProductAdapter.OnClickListener {
+            override fun onClickItem(data: ResponseProductByIdMitra) {
+                Toast.makeText(
+                    requireContext(),
+                    "${data.namaProduk},${data.harga}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        })
+        binding.rvProduct.adapter = productAdapter
     }
 
     private fun observeUser() {
@@ -61,7 +144,7 @@ class HomeFragment : Fragment() {
         Handler(Looper.getMainLooper()).postDelayed({
             viewModel.responseUserById.observe(viewLifecycleOwner) {
                 when (it.status) {
-                    Status.SUCCESS -> {
+                    SUCCESS -> {
                         progressDialog.dismiss()
                         when (it.data?.code) {
                             200 -> {
@@ -84,7 +167,7 @@ class HomeFragment : Fragment() {
                         }
 
                     }
-                    Status.ERROR -> {
+                    ERROR -> {
                         progressDialog.dismiss()
                         AlertDialog.Builder(requireContext())
                             .setTitle("Pesan")
@@ -94,12 +177,12 @@ class HomeFragment : Fragment() {
                             }
                             .show()
                     }
-                    Status.LOADING -> {
+                    LOADING -> {
                         progressDialog.show()
                     }
                 }
             }
-        },200)
+        }, 200)
 
     }
 }

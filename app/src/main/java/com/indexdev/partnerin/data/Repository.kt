@@ -58,4 +58,7 @@ class Repository(private val apiHelper: ApiHelper) {
 
     suspend fun newPassword(requestNewPassword: RequestNewPassword) =
         apiHelper.newPassword(requestNewPassword)
+
+    suspend fun getProductByIdMitra(id: Int) = apiHelper.getProductByIdMitra(id)
+
 }

@@ -4,6 +4,7 @@ import com.indexdev.partnerin.data.model.request.*
 import com.indexdev.partnerin.data.model.response.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import retrofit2.Response
 import retrofit2.http.*
 
 interface ApiService {
@@ -52,4 +53,8 @@ interface ApiService {
 
     @POST("newpassword")
     suspend fun newPassword(@Body requestNewPassword: RequestNewPassword): ResponseNewPassword
+
+    // product
+    @GET("produkByIdMitra/{id}")
+    suspend fun getProductByIdMitra(@Path("id") id: Int): Response<List<ResponseProductByIdMitra>>
 }

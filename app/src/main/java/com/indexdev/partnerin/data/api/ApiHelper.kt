@@ -57,4 +57,7 @@ class ApiHelper(private val apiService: ApiService) {
 
     suspend fun newPassword(requestNewPassword: RequestNewPassword) =
         apiService.newPassword(requestNewPassword)
+
+    suspend fun getProductByIdMitra(id: Int) = apiService.getProductByIdMitra(id)
+
 }
