@@ -68,4 +68,21 @@ interface ApiService {
         @Part("deskripsi") deskripsi: RequestBody?,
         @Part file: MultipartBody.Part
     ): ResponseAddProduct
+
+    @Multipart
+    @POST("produk/{id}")
+    suspend fun editProduct(
+        @Path("id") id: Int,
+        @Part("id_mitra") idMitra: Int,
+        @Part("nama_produk") namaProduk: RequestBody?,
+        @Part("harga") harga: RequestBody?,
+        @Part("satuan") satuan: RequestBody?,
+        @Part("deskripsi") deskripsi: RequestBody?,
+        @Part file: MultipartBody.Part?,
+        @Part("gambar_lama") gambarLama: RequestBody?
+    ): ResponseEditProduct
+
+    @GET("produkById/{id}")
+    suspend fun getProductById(@Path("id") id: Int): ResponseProdukById
+
 }

@@ -75,4 +75,25 @@ class ApiHelper(private val apiService: ApiService) {
         deskripsi = deskripsi,
         file = file
     )
+    suspend fun editProduct(
+        id: Int,
+        idMitra: Int,
+        namaProduk: RequestBody,
+        harga: RequestBody,
+        satuan: RequestBody,
+        deskripsi: RequestBody,
+        file: MultipartBody.Part?,
+        gambarLama: RequestBody
+    ) = apiService.editProduct(
+        id = id,
+        idMitra = idMitra,
+        namaProduk = namaProduk,
+        harga = harga,
+        satuan = satuan,
+        deskripsi = deskripsi,
+        file = file,
+        gambarLama = gambarLama
+    )
+
+    suspend fun getProductById(id:Int) = apiService.getProductById(id)
 }

@@ -151,7 +151,7 @@ class AddProductFragment : Fragment() {
         } else if (price.isEmpty()) {
             binding.etPriceContainer.error = "Harga produk tidak boleh kosong"
         } else if (price.toInt() < 1000) {
-            binding.etPriceContainer.error = "Harga produk minimal Rp. 100"
+            binding.etPriceContainer.error = "Harga produk minimal Rp. 1000"
         } else if (unit.isEmpty()) {
             binding.etUnitContainer.error = "Satuan tidak boleh kosong"
         } else if (desc.isEmpty()) {

@@ -33,6 +33,10 @@ class HomeFragment : Fragment() {
     private lateinit var productAdapter: ProductAdapter
     private val listProduct: MutableList<ResponseProductByIdMitra> = ArrayList()
 
+    companion object {
+        const val ID_PRODUK = "ID_PRODUK"
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -129,11 +133,14 @@ class HomeFragment : Fragment() {
     private fun detailProduct() {
         productAdapter = ProductAdapter(object : ProductAdapter.OnClickListener {
             override fun onClickItem(data: ResponseProductByIdMitra) {
-                Toast.makeText(
-                    requireContext(),
-                    "${data.namaProduk},${data.harga}",
-                    Toast.LENGTH_SHORT
-                ).show()
+                val bundle = Bundle()
+                bundle.putString(ID_PRODUK,data.idProduk)
+                findNavController().navigate(R.id.action_homeFragment_to_editProductFragment,bundle)
+//                Toast.makeText(
+//                    requireContext(),
+//                    "${data.namaProduk},${data.harga}",
+//                    Toast.LENGTH_SHORT
+//                ).show()
             }
         })
         binding.rvProduct.adapter = productAdapter

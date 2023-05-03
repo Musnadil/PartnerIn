@@ -37,7 +37,7 @@ class ProductAdapter(private val onClickItem: OnClickListener) :
         @SuppressLint("SetTextI18n")
         fun bind(data: ResponseProductByIdMitra) {
             Glide.with(binding.root)
-                .load("http://192.168.0.107:8080/gambar/${data.gambar}")
+                .load("http://192.168.206.15:8080/gambar/${data.gambar}")
                 .transform(CenterCrop())
                 .into(binding.ivProduct)
             binding.tvProductName.text = data.namaProduk
