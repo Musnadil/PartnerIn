@@ -97,6 +97,8 @@ class Repository(private val apiHelper: ApiHelper) {
         gambarLama = gambarLama
     )
 
-    suspend fun getProductById(id:Int) = apiHelper.getProductById(id)
+    suspend fun getProductById(id: Int) = apiHelper.getProductById(id)
+
+    suspend fun deleteProduct(id: Int) = apiHelper.deleteProduct(id)
 
 }

@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.indexdev.partnerin.data.Repository
 import com.indexdev.partnerin.data.api.Resource
+import com.indexdev.partnerin.data.model.response.ResponseDeleteProduct
 import com.indexdev.partnerin.data.model.response.ResponseEditProduct
 import com.indexdev.partnerin.data.model.response.ResponseProdukById
 import com.indexdev.partnerin.ui.reduceFileImage
@@ -53,8 +54,10 @@ class EditProductViewModel @Inject constructor(private val repository: Repositor
         gambar: File?,
         gambarLama: String
     ) {
-        val fileImage = gambar?.let { reduceFileImage(it).asRequestBody("image/jpg".toMediaTypeOrNull()) }
-        val productImage = fileImage?.let { MultipartBody.Part.createFormData("gambar", gambar.name, it) }
+        val fileImage =
+            gambar?.let { reduceFileImage(it).asRequestBody("image/jpg".toMediaTypeOrNull()) }
+        val productImage =
+            fileImage?.let { MultipartBody.Part.createFormData("gambar", gambar.name, it) }
         val productName = namaProduk.toRequestBody("text/plain".toMediaType())
         val price = harga.toRequestBody("text/plain".toMediaType())
         val unit = satuan.toRequestBody("text/plain".toMediaType())
@@ -86,5 +89,24 @@ class EditProductViewModel @Inject constructor(private val repository: Repositor
                 )
             }
         }
+    }
+
+    private val _responseDeleteProduct = MutableLiveData<Resource<ResponseDeleteProduct>>()
+    val responseDeleteProduct: LiveData<Resource<ResponseDeleteProduct>> get() = _responseDeleteProduct
+
+    fun deleteProduct(idProduct: Int) {
+        viewModelScope.launch {
+            _responseDeleteProduct.postValue(Resource.loading())
+            try {
+                _responseDeleteProduct.postValue(Resource.success(repository.deleteProduct(idProduct)))
+            } catch (e: Exception) {
+                _responseDeleteProduct.postValue(
+                    Resource.error(
+                        e.localizedMessage ?: "Error Occurred"
+                    )
+                )
+            }
+        }
+
     }
 }

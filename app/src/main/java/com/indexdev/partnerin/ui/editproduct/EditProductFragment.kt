@@ -5,6 +5,8 @@ import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -73,8 +75,54 @@ class EditProductFragment : Fragment() {
         }
         getProductById()
         updateProductObserver()
+        deleteProductObserver()
         binding.btnSave.setOnClickListener {
             doUpdateProduct()
+        }
+        binding.btnDelete.setOnClickListener {
+            AlertDialog.Builder(requireContext())
+                .setTitle("Pesan")
+                .setMessage("Anda yakin ingin menghapus ${binding.etProductName.text} dari produk anda?")
+                .setPositiveButton("Ya") { positiveButton, _ ->
+                    progressDialog.show()
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        viewModel.deleteProduct(idProduct)
+                    },2000)
+                    positiveButton.dismiss()
+                }
+                .setNegativeButton("Tidak"){ negativeButton, _ ->
+                    negativeButton.dismiss()
+                }
+                .show()
+        }
+    }
+
+    private fun deleteProductObserver() {
+        viewModel.responseDeleteProduct.observe(viewLifecycleOwner){
+            when (it.status){
+                SUCCESS -> {
+                    progressDialog.dismiss()
+                    when (it.data?.code){
+                        200 -> {
+                            Toast.makeText(requireContext(), "Produk berhasil dihapus", Toast.LENGTH_SHORT).show()
+                            findNavController().popBackStack()
+                        }
+                    }
+                }
+                ERROR -> {
+                    progressDialog.dismiss()
+                    AlertDialog.Builder(requireContext())
+                        .setTitle("Pesan")
+                        .setMessage(it?.message ?: "Error")
+                        .setPositiveButton("Ok") { positiveButton, _ ->
+                            positiveButton.dismiss()
+                        }
+                        .show()
+                }
+                LOADING -> {
+                    progressDialog.show()
+                }
+            }
         }
     }
 

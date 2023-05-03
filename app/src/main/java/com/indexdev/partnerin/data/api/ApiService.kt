@@ -85,4 +85,7 @@ interface ApiService {
     @GET("produkById/{id}")
     suspend fun getProductById(@Path("id") id: Int): ResponseProdukById
 
+    @DELETE("produk/{id}")
+    suspend fun deleteProduct(@Path("id") id: Int): ResponseDeleteProduct
+
 }
