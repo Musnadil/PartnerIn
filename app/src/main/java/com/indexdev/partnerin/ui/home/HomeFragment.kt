@@ -61,8 +61,13 @@ class HomeFragment : Fragment() {
             observeUser()
         }
 
-        getProduct()
         detailProduct()
+        if (!sharedPref.contains("ID_USER")){
+            !findNavController().popBackStack()
+            requireActivity().finish()
+        } else{
+            getProduct()
+        }
     }
 
     private fun getProduct() {

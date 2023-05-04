@@ -17,6 +17,7 @@ import com.indexdev.partnerin.databinding.FragmentProfileBinding
 import com.indexdev.partnerin.ui.login.LoginFragment.Companion.DEFAULT_VALUE
 import com.indexdev.partnerin.ui.login.LoginFragment.Companion.ID_USER
 import com.indexdev.partnerin.ui.login.LoginFragment.Companion.USER_SP
+import com.indexdev.partnerin.ui.register.RegisterFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -48,6 +49,7 @@ class ProfileFragment : Fragment() {
         binding.btnAccountSettings.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_accountSettingsFragment)
         }
+        val sharedPrefUser = requireContext().getSharedPreferences(RegisterFragment.REGISTER_SP, Context.MODE_PRIVATE)
         binding.btnLogout.setOnClickListener {
             AlertDialog.Builder(context)
                 .setTitle("Konfirmasi Keluar")
@@ -55,6 +57,9 @@ class ProfileFragment : Fragment() {
                 .setCancelable(false)
                 .setPositiveButton("Ya") { positive, _ ->
                     positive.dismiss()
+                    sharedPref.edit().clear().apply()
+                    sharedPrefUser.edit().clear().apply()
+                    findNavController().navigate(R.id.action_profileFragment_to_registerFragment)
                 }
                 .setNegativeButton("Tidak") { negative, _ ->
                     negative.dismiss()
@@ -82,8 +87,8 @@ class ProfileFragment : Fragment() {
                             binding.tvEmail.text = it.data.userMitraById.emailPemilik
                         }
                     }
-
                 }
+
                 ERROR -> {
                     progressDialog.dismiss()
                     AlertDialog.Builder(requireContext())
@@ -94,6 +99,7 @@ class ProfileFragment : Fragment() {
                         }
                         .show()
                 }
+
                 LOADING -> {
                     progressDialog.show()
                 }
