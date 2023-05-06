@@ -59,7 +59,8 @@ class ProfileFragment : Fragment() {
                     positive.dismiss()
                     sharedPref.edit().clear().apply()
                     sharedPrefUser.edit().clear().apply()
-                    findNavController().navigate(R.id.action_profileFragment_to_registerFragment)
+                    activity?.finish()
+                    activity?.startActivity(activity?.intent)
                 }
                 .setNegativeButton("Tidak") { negative, _ ->
                     negative.dismiss()
