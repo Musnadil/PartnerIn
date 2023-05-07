@@ -194,7 +194,7 @@ class RegisterFragment : Fragment() {
 
         if (businessOwner.isEmpty()) {
             binding.etConBusinessOwner.error = "Nama pemilik usaha tidak boleh kosong"
-        } else if (businessName.length < 3) {
+        } else if (businessOwner.length < 3) {
             binding.etConBusinessOwner.error = "Nama terlalu pendek"
         } else if (!businessOwner.matches("[a-zA-Z ]+".toRegex())) {
             binding.etConBusinessOwner.error = "Nama tidak boleh ada karakter selain huruf"
