@@ -45,6 +45,9 @@ interface ApiService {
         @Body requestEditAccount: RequestEditAccount
     ): ResponseEditAccount
 
+    @GET("usermitra")
+    suspend fun getAllUserPartner(): Response<List<ResponseGetAllUserPartnerItem>>
+
     @POST("forgotpassword")
     suspend fun forgotPassword(@Body email: RequestEmailCheck): ResponseForgotPassword
 

@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 in listFragmentNoMenu -> {
                     lightStatusBar(window)
+                    showSystemUI()
                     binding.bottomNavigation.visibility = View.GONE
                 }
                 else -> {

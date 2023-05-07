@@ -1,6 +1,7 @@
 package com.indexdev.partnerin.data.api
 
 import com.indexdev.partnerin.data.model.request.*
+import com.indexdev.partnerin.data.model.response.ResponseGetAllUserPartner
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
@@ -50,6 +51,8 @@ class ApiHelper(private val apiService: ApiService) {
     suspend fun editAccount(id: Int, requestEditAccount: RequestEditAccount) =
         apiService.editAccount(id, requestEditAccount)
 
+    suspend fun getAllUserPartner() = apiService.getAllUserPartner()
+
     suspend fun forgotPassword(email: RequestEmailCheck) = apiService.forgotPassword(email)
 
     suspend fun verifyOtp(requestVerifyOtp: RequestVerifyOtp) =
@@ -75,6 +78,7 @@ class ApiHelper(private val apiService: ApiService) {
         deskripsi = deskripsi,
         file = file
     )
+
     suspend fun editProduct(
         id: Int,
         idMitra: Int,
@@ -95,7 +99,7 @@ class ApiHelper(private val apiService: ApiService) {
         gambarLama = gambarLama
     )
 
-    suspend fun getProductById(id:Int) = apiService.getProductById(id)
+    suspend fun getProductById(id: Int) = apiService.getProductById(id)
 
     suspend fun deleteProduct(id: Int) = apiService.deleteProduct(id)
 }
