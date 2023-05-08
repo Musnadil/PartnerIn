@@ -52,14 +52,16 @@ class SuperAdminHomeFragment : Fragment() {
         if (statusBarHeight > 0) {
             binding.statusbar.layoutParams.height = resources.getDimensionPixelSize(statusBarHeight)
         }
+        progressDialog = ProgressDialog(requireContext())
+        progressDialog.setCancelable(false)
+        progressDialog.setMessage("Harap tunggu...")
+
         setupButton()
         getUserPartner()
         detailUser()
         logout()
 
-        progressDialog = ProgressDialog(requireContext())
-        progressDialog.setCancelable(false)
-        progressDialog.setMessage("Harap tunggu...")
+
     }
 
     private fun logout() {
@@ -93,7 +95,7 @@ class SuperAdminHomeFragment : Fragment() {
         userAdapter = UserAdapter(object : UserAdapter.OnClickListener {
             override fun onClickItem(data: ResponseGetAllUserPartnerItem) {
                 val bundle = Bundle()
-                bundle.putString(PARTNER_ID, data.status)
+                bundle.putString(PARTNER_ID, data.idMitra)
                 if (data.status == "deactive") {
                     findNavController().navigate(
                         R.id.action_superAdminHomeFragment_to_superAdminApprovalFragment,
@@ -105,32 +107,36 @@ class SuperAdminHomeFragment : Fragment() {
                         bundle
                     )
                 }
-                Toast.makeText(requireContext(), data.namaUsaha, Toast.LENGTH_SHORT).show()
             }
         })
         binding.rvUser.adapter = userAdapter
     }
 
     private fun getUserPartner() {
+        binding.rvUser.visibility = View.GONE
+        progressDialog.show()
         viewModel.getUser()
         viewModel.getAllUserPartner.removeObservers(viewLifecycleOwner)
+        Handler(Looper.getMainLooper()).postDelayed({
         viewModel.getAllUserPartner.observe(viewLifecycleOwner) {
             when (it.status) {
                 SUCCESS -> {
-                    viewModel.getAllUserPartner.removeObservers(viewLifecycleOwner)
                     when (it.data?.code()) {
                         200 -> {
                             if (!it.data.body().isNullOrEmpty()) {
                                 listUser.clear()
+                                listApproved.clear()
+                                listWaiting.clear()
                                 listUser.addAll(it.data.body()!!)
-                                for (i in listUser) {
-                                    if (i.status == "deactive" && i.role == "2") {
-                                        listWaiting.add(i)
-                                    } else if (i.status == "active" && i.role == "2") {
-                                        listApproved.add(i)
-                                    }
-                                }
+
                                 Handler(Looper.getMainLooper()).postDelayed({
+                                    for (i in listUser) {
+                                        if (i.status == "deactive" && i.role == "2") {
+                                            listWaiting.add(i)
+                                        } else if (i.status == "active" && i.role == "2") {
+                                            listApproved.add(i)
+                                        }
+                                    }
                                     progressDialog.dismiss()
                                     binding.rvUser.visibility = View.VISIBLE
                                     userAdapter.submitData(listWaiting)
@@ -172,6 +178,7 @@ class SuperAdminHomeFragment : Fragment() {
             }
 
         }
+        },1000)
 
     }
 
