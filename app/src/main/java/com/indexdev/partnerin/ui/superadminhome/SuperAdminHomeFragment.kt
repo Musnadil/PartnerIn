@@ -96,17 +96,21 @@ class SuperAdminHomeFragment : Fragment() {
             override fun onClickItem(data: ResponseGetAllUserPartnerItem) {
                 val bundle = Bundle()
                 bundle.putString(PARTNER_ID, data.idMitra)
-                if (data.status == "deactive") {
-                    findNavController().navigate(
-                        R.id.action_superAdminHomeFragment_to_superAdminApprovalFragment,
-                        bundle
-                    )
-                } else if (data.status == "active") {
-                    findNavController().navigate(
-                        R.id.action_superAdminHomeFragment_to_superAdminDisableFragment,
-                        bundle
-                    )
-                }
+                findNavController().navigate(
+                    R.id.action_superAdminHomeFragment_to_superAdminApprovalFragment,
+                    bundle
+                )
+//                if (data.status == "deactive") {
+//                    findNavController().navigate(
+//                        R.id.action_superAdminHomeFragment_to_superAdminApprovalFragment,
+//                        bundle
+//                    )
+//                } else if (data.status == "active") {
+//                    findNavController().navigate(
+//                        R.id.action_superAdminHomeFragment_to_superAdminDisableFragment,
+//                        bundle
+//                    )
+//                }
             }
         })
         binding.rvUser.adapter = userAdapter
