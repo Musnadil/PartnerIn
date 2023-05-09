@@ -141,11 +141,6 @@ class HomeFragment : Fragment() {
                 val bundle = Bundle()
                 bundle.putString(ID_PRODUK,data.idProduk)
                 findNavController().navigate(R.id.action_homeFragment_to_editProductFragment,bundle)
-//                Toast.makeText(
-//                    requireContext(),
-//                    "${data.namaProduk},${data.harga}",
-//                    Toast.LENGTH_SHORT
-//                ).show()
             }
         })
         binding.rvProduct.adapter = productAdapter
