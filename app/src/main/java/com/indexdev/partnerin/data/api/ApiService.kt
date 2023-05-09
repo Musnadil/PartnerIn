@@ -91,4 +91,7 @@ interface ApiService {
     @DELETE("produk/{id}")
     suspend fun deleteProduct(@Path("id") id: Int): ResponseDeleteProduct
 
+    // marker
+    @GET("poi/{id}")
+    suspend fun getMarkerByIdTour(@Path("id") id: Int): Response<List<ResponseGetMarkerItem>>
 }

@@ -102,4 +102,6 @@ class ApiHelper(private val apiService: ApiService) {
     suspend fun getProductById(id: Int) = apiService.getProductById(id)
 
     suspend fun deleteProduct(id: Int) = apiService.deleteProduct(id)
+
+    suspend fun getMarkerByIdTour(id: Int) = apiService.getMarkerByIdTour(id)
 }

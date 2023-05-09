@@ -103,4 +103,6 @@ class Repository(private val apiHelper: ApiHelper) {
 
     suspend fun deleteProduct(id: Int) = apiHelper.deleteProduct(id)
 
+    suspend fun getMarkerByIdTour(id: Int) = apiHelper.getMarkerByIdTour(id)
+
 }

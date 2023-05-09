@@ -26,7 +26,29 @@
             android:text="@string/app_name"
             android:textColor="@color/black"
             android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/btn_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="32dp"
+            android:src="@drawable/ic_log_out"
+            app:tint="@color/black"
+            />
     </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/tv_facility"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Fasilitas Candi Borobudur"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_product"
@@ -36,7 +58,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintTop_toBottomOf="@id/tv_facility"
         app:spanCount="2"
         tools:listitem="@layout/item_marker" />
 
@@ -47,7 +69,7 @@
         android:layout_margin="16dp"
         android:src="@drawable/ic_add"
         app:backgroundTint="@color/teal"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:tint="@color/white" />
 
@@ -58,6 +80,11 @@
         android:layout_height="4dp"
         android:background="@drawable/shadow_line"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
+    <View
+        android:id="@+id/bottom_nav_bar"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

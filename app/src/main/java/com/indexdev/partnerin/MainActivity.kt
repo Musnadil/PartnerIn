@@ -32,6 +32,9 @@ class MainActivity : AppCompatActivity() {
         R.id.accountSettingsFragment,
         R.id.superAdminHomeFragment,
         R.id.superAdminApprovalFragment,
+        R.id.addMarkerFragment,
+        R.id.editMarkerFragment,
+        R.id.managerHomeFragment,
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
