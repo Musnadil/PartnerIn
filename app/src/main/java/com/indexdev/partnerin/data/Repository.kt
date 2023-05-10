@@ -105,4 +105,7 @@ class Repository(private val apiHelper: ApiHelper) {
 
     suspend fun getMarkerByIdTour(id: Int) = apiHelper.getMarkerByIdTour(id)
 
+    suspend fun addMarker(requestAddMarker: RequestAddMarker) =
+        apiHelper.addMarker(requestAddMarker)
+
 }

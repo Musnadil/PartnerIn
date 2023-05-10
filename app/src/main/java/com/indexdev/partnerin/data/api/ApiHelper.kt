@@ -1,9 +1,11 @@
 package com.indexdev.partnerin.data.api
 
 import com.indexdev.partnerin.data.model.request.*
+import com.indexdev.partnerin.data.model.response.ResponseAddMarker
 import com.indexdev.partnerin.data.model.response.ResponseGetAllUserPartner
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import retrofit2.http.Body
 
 class ApiHelper(private val apiService: ApiService) {
     suspend fun register(
@@ -104,4 +106,7 @@ class ApiHelper(private val apiService: ApiService) {
     suspend fun deleteProduct(id: Int) = apiService.deleteProduct(id)
 
     suspend fun getMarkerByIdTour(id: Int) = apiService.getMarkerByIdTour(id)
+
+    suspend fun addMarker(requestAddMarker: RequestAddMarker) = apiService.addMarker(requestAddMarker)
+
 }

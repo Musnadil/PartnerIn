@@ -18,6 +18,10 @@
         <item>/Pcs</item>
     </string-array>
     <string-array name="jenis_fasilitas">
+        <item>Toilet</item>
+        <item>Food Court</item>
+        <item>Titik Evakuasi</item>
+        <item>Tempat Parkir</item>
         <item>Masjid</item>
         <item>Gereja</item>
         <item>Pura</item>
@@ -26,6 +30,7 @@
     </string-array>
     <string name="pesan_register">Anda harus berada pada gerai anda, hal ini karena titik koordinat anda saat ini akan ditampilkan pada maps aplikasi TourIn. Klik Ok jika anda sudah berada pada gerai anda. Klik batal jika tidak.</string>
     <string name="pesan_sukses_register">Terimakasih sudah mendaftarkan usaha anda pada kami. Selanjutnya tim kami akan meninjau gerai anda. Silahkan tunggu email konfirmasi dari kami bahwa akun anda telah aktif.</string>
+    <string name="pesan_konfirmasi_tambah_marker">Anda harus berada pada tempat fasilitas wisata untuk menambahkannya. Klik Ok jika anda sudah berada pada tempat fasilitas wisata. Klik batal jika tidak.</string>
 
     <string-array name="wisata">
         <item>Danau Toba</item>

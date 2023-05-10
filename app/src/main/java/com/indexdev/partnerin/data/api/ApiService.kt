@@ -94,4 +94,7 @@ interface ApiService {
     // marker
     @GET("poi/{id}")
     suspend fun getMarkerByIdTour(@Path("id") id: Int): Response<List<ResponseGetMarkerItem>>
+
+    @POST("poi")
+    suspend fun addMarker(@Body requestAddMarker: RequestAddMarker): ResponseAddMarker
 }
