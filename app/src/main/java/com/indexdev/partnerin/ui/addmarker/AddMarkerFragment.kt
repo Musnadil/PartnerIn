@@ -27,7 +27,7 @@ import com.google.android.gms.location.*
 import com.google.android.gms.tasks.Task
 import com.indexdev.partnerin.R
 import com.indexdev.partnerin.data.api.Status.*
-import com.indexdev.partnerin.data.model.request.RequestAddMarker
+import com.indexdev.partnerin.data.model.request.RequestMarker
 import com.indexdev.partnerin.databinding.FragmentAddMarkerBinding
 import com.indexdev.partnerin.ui.login.LoginFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -135,9 +135,9 @@ class AddMarkerFragment : Fragment() {
                 .setMessage(getString(R.string.pesan_konfirmasi_tambah_marker))
                 .setPositiveButton("Ok") { positiveButton, _ ->
                     positiveButton.dismiss()
-                    val requestAddMarker =
-                        RequestAddMarker(facilityCode, tourCode, lat, long, facilityName)
-                    doAddMarker(requestAddMarker)
+                    val requestMarker =
+                        RequestMarker(facilityCode, tourCode, lat, long, facilityName)
+                    doAddMarker(requestMarker)
                 }
                 .setNegativeButton("Batal") { negativeButton, _ ->
                     negativeButton.dismiss()
@@ -146,9 +146,9 @@ class AddMarkerFragment : Fragment() {
         }
     }
 
-    private fun doAddMarker(requestAddMarker: RequestAddMarker) {
+    private fun doAddMarker(requestMarker: RequestMarker) {
         progressDialog.show()
-        viewModel.addMarker(requestAddMarker)
+        viewModel.addMarker(requestMarker)
         Handler(Looper.getMainLooper()).postDelayed({
             viewModel.responseAddMarker.observe(viewLifecycleOwner) {
                 when (it.status) {

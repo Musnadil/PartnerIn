@@ -3,7 +3,7 @@ package com.indexdev.partnerin.data.model.request
 
 import com.google.gson.annotations.SerializedName
 
-data class RequestAddMarker(
+data class RequestMarker(
     @SerializedName("kode_fasilitas")
     val kodeFasilitas: String,
     @SerializedName("kode_wisata")

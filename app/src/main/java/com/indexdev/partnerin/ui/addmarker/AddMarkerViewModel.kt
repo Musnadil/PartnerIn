@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.indexdev.partnerin.data.Repository
 import com.indexdev.partnerin.data.api.Resource
-import com.indexdev.partnerin.data.model.request.RequestAddMarker
+import com.indexdev.partnerin.data.model.request.RequestMarker
 import com.indexdev.partnerin.data.model.response.ResponseAddMarker
 import com.indexdev.partnerin.data.model.response.ResponseUserMitraById
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -34,11 +34,11 @@ class AddMarkerViewModel @Inject constructor(private val repository: Repository)
     private val _responseAddMarker: MutableLiveData<Resource<ResponseAddMarker>> = MutableLiveData()
     val responseAddMarker: LiveData<Resource<ResponseAddMarker>> get() = _responseAddMarker
 
-    fun addMarker(requestAddMarker: RequestAddMarker) {
+    fun addMarker(requestMarker: RequestMarker) {
         viewModelScope.launch {
             _responseAddMarker.postValue(Resource.loading())
             try {
-                _responseAddMarker.postValue(Resource.success(repository.addMarker(requestAddMarker)))
+                _responseAddMarker.postValue(Resource.success(repository.addMarker(requestMarker)))
             } catch (e: Exception) {
                 _responseAddMarker.postValue(Resource.error(e.localizedMessage ?: "Error Occurred"))
             }
