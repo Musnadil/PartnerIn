@@ -92,9 +92,20 @@ interface ApiService {
     suspend fun deleteProduct(@Path("id") id: Int): ResponseDeleteProduct
 
     // marker
+    /*this endpoint for show poi by tour*/
     @GET("poi/{id}")
     suspend fun getMarkerByIdTour(@Path("id") id: Int): Response<List<ResponseGetMarkerItem>>
 
+    /*this endpoint for show detail poi by id*/
+    @GET("poiById/{id}")
+    suspend fun getMarkerById(@Path("id") id: Int): ResponseMarkerById
+
     @POST("poi")
-    suspend fun addMarker(@Body requestAddMarker: RequestAddMarker): ResponseAddMarker
+    suspend fun addMarker(@Body requestMarker: RequestMarker): ResponseAddMarker
+
+    @PUT("poi/{id}")
+    suspend fun editMarker(
+        @Path("id") id: Int,
+        @Body requestMarker: RequestMarker
+    ): ResponseEditMarker
 }

@@ -60,6 +60,58 @@
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:id="@+id/et_location"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="16sp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_outlined_rounded_16"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:paddingStart="16dp"
+        android:singleLine="true"
+        android:text="Lokasi"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/et_facility_name_container" />
+
+    <TextView
+        android:id="@+id/tv_error_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:textColor="@color/red"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/et_location"
+        app:layout_constraintTop_toBottomOf="@id/et_location" />
+
+    <TextView
+        android:id="@+id/tv_location_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:background="@color/white"
+        android:paddingHorizontal="2dp"
+        android:text="Lokasi"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/et_location"
+        app:layout_constraintStart_toStartOf="@id/et_location"
+        app:layout_constraintTop_toTopOf="@id/et_location" />
+
+    <ImageView
+        android:id="@+id/btn_get_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_btn_location"
+        app:layout_constraintBottom_toBottomOf="@id/et_location"
+        app:layout_constraintEnd_toEndOf="@id/et_location"
+        app:layout_constraintTop_toTopOf="@id/et_location" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/et_facility_type_container"
@@ -67,12 +119,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="24dp"
         app:boxCornerRadiusBottomEnd="16dp"
         app:boxCornerRadiusBottomStart="16dp"
         app:boxCornerRadiusTopEnd="16dp"
         app:boxCornerRadiusTopStart="16dp"
         app:errorEnabled="true"
-        app:layout_constraintTop_toBottomOf="@id/et_facility_name_container">
+        app:layout_constraintTop_toBottomOf="@id/et_location">
 
         <AutoCompleteTextView
             android:id="@+id/et_facility_type"
@@ -86,12 +139,12 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_publish"
+        android:id="@+id/btn_save"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_marginHorizontal="16dp"
         android:fontFamily="@font/poppins_semibold"
-        android:text="Terbitkan"
+        android:text="Simpan Perubahan"
         android:textAllCaps="false"
         android:textSize="16sp"
         app:cornerRadius="16dp"
