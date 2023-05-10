@@ -58,4 +58,25 @@ class EditMarkerViewModel @Inject constructor(private val repository: Repository
             }
         }
     }
+
+    private val _responseDeleteMarker: MutableLiveData<Resource<ResponseEditMarker>> =
+        MutableLiveData()
+    val responseDeleteMarker: LiveData<Resource<ResponseEditMarker>> get() = _responseDeleteMarker
+
+    fun deleteMarker(id: Int) {
+        viewModelScope.launch {
+            _responseDeleteMarker.postValue(Resource.loading())
+            try {
+                _responseDeleteMarker.postValue(Resource.success(repository.deleteMarker(id)))
+
+            } catch (e: Exception) {
+                _responseDeleteMarker.postValue(
+                    Resource.error(
+                        e.localizedMessage ?: "Error Occurred"
+                    )
+                )
+
+            }
+        }
+    }
 }

@@ -111,4 +111,6 @@ class ApiHelper(private val apiService: ApiService) {
     suspend fun editMarker(id: Int, requestMarker: RequestMarker) =
         apiService.editMarker(id, requestMarker)
 
+    suspend fun deleteMarker(id: Int) = apiService.deleteMarker(id)
+
 }

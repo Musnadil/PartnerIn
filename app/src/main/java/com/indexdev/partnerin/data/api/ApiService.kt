@@ -108,4 +108,7 @@ interface ApiService {
         @Path("id") id: Int,
         @Body requestMarker: RequestMarker
     ): ResponseEditMarker
+
+    @DELETE("poi/{id}")
+    suspend fun deleteMarker(@Path("id") id:Int): ResponseEditMarker
 }

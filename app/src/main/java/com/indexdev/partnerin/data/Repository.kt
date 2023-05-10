@@ -112,4 +112,6 @@ class Repository(private val apiHelper: ApiHelper) {
     suspend fun editMarker(id: Int, requestMarker: RequestMarker) =
         apiHelper.editMarker(id, requestMarker)
 
+    suspend fun deleteMarker(id: Int) = apiHelper.deleteMarker(id)
+
 }

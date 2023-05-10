@@ -79,6 +79,7 @@ class EditMarkerFragment : Fragment() {
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
         requestLocationSettings()
+        observeMarker()
 
         binding.btnGetLocation.setOnClickListener {
             fetchLocation()
@@ -103,7 +104,66 @@ class EditMarkerFragment : Fragment() {
         binding.btnSave.setOnClickListener {
             validate()
         }
-        observeMarker()
+        binding.btnDelete.setOnClickListener {
+            AlertDialog.Builder(requireContext())
+                .setTitle("Pesan")
+                .setMessage("Anda yakin ingin menghapus fasilitas?")
+                .setPositiveButton("Ya") { positiveButton, _ ->
+                    positiveButton.dismiss()
+                    doDeleteMarker()
+                }
+                .setNegativeButton("Batal") { negativeButton, _ ->
+                    negativeButton.dismiss()
+                }
+                .show()
+        }
+    }
+
+    private fun doDeleteMarker() {
+        progressDialog.show()
+        val idMarker = arguments?.get(ManagerHomeFragment.MARKER_ID)
+        viewModel.deleteMarker(idMarker.toString().toInt())
+        Handler(Looper.getMainLooper()).postDelayed({
+            viewModel.responseDeleteMarker.observe(viewLifecycleOwner) {
+                when (it.status) {
+                    SUCCESS -> {
+                        progressDialog.dismiss()
+                        when (it.data?.code) {
+                            200 -> {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Fasilitas telah dihapus",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                findNavController().popBackStack()
+                            }
+                            else -> {
+                                AlertDialog.Builder(requireContext())
+                                    .setTitle("Pesan")
+                                    .setMessage(it.message ?: "error")
+                                    .setPositiveButton("Ok") { positiveButton, _ ->
+                                        positiveButton.dismiss()
+                                    }
+                                    .show()
+                            }
+                        }
+                    }
+                    ERROR -> {
+                        progressDialog.dismiss()
+                        AlertDialog.Builder(requireContext())
+                            .setTitle("Pesan")
+                            .setMessage(it.message ?: "error")
+                            .setPositiveButton("Ok") { positiveButton, _ ->
+                                positiveButton.dismiss()
+                            }
+                            .show()
+                    }
+                    LOADING -> {
+                        progressDialog.show()
+                    }
+                }
+            }
+        }, 1000)
     }
 
     private fun observeMarker() {
@@ -226,13 +286,21 @@ class EditMarkerFragment : Fragment() {
                 when (it.status) {
                     SUCCESS -> {
                         progressDialog.dismiss()
-                        when (it.data?.code){
+                        when (it.data?.code) {
                             200 -> {
-                                Toast.makeText(requireContext(), "Berhasil mengubah data fasilitas", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Berhasil mengubah data fasilitas",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                                 findNavController().popBackStack()
                             }
                             else -> {
-                                Toast.makeText(requireContext(), "Gagal mengubah data fasilitas", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Gagal mengubah data fasilitas",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                                 findNavController().popBackStack()
                             }
                         }
