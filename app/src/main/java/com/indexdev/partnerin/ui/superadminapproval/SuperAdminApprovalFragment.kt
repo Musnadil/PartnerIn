@@ -162,7 +162,7 @@ class SuperAdminApprovalFragment : Fragment() {
                             }
 
                             Glide.with(requireContext())
-                                .load("http://192.168.0.107:8080/gambar/${it.data.userMitraById.gambar}")
+                                .load("https://tourin.musnadil.my.id/gambar/${it.data.userMitraById.gambar}")
                                 .transform(CenterCrop())
                                 .into(binding.ivBusiness)
                             val lat = it.data.userMitraById.lat

@@ -216,7 +216,7 @@ class EditProductFragment : Fragment() {
                         idMitra = it.data.idMitra.toInt()
                         oldImage = it.data.gambar
                         Glide.with(requireContext())
-                            .load("http://192.168.0.107:8080/gambar/${it.data.gambar}")
+                            .load("https://tourin.musnadil.my.id/gambar/${it.data.gambar}")
                             .transform(CenterCrop())
                             .into(binding.ivProductPhoto)
                         binding.etProductName.setText(it.data.namaProduk)

@@ -97,6 +97,9 @@ class AddMarkerFragment : Fragment() {
         binding.btnAdd.setOnClickListener {
             validate()
         }
+        binding.btnBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
         observeUser()
     }
 
